@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.circleimageview)
     implementation(libs.glide)
+    implementation(libs.gson)
     implementation(libs.picasso)
     testImplementation(libs.junit)
     implementation(libs.core)
