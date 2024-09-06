@@ -2,4 +2,30 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="bg">#00000000</color>
+    <color name="progress_bar">#CC000000</color>
+    <!--    <color name="bgLight">#33FFEB3B</color>-->
+
+    <color name="bgBackDark">#E6052323</color>
+    <color name="bgLight">#86052323</color>
+    <!--    <color name="brown">#723B14</color>-->
+    <color name="alternate">#1F1E1E</color>
+    <color name="bgAlternate">#919191</color>
+
+    <color name="primary">#FBE10E</color>
+    <color name="primary2">#FFED58</color>
+    <color name="secondary">#FF000000</color>
+    <color name="primaryTranslucent">#90FBE10E</color>
+
+    <color name="text">#FFFFFF</color>
+    <!--    <color name="text">#FF000000</color>-->
+    <color name="light_text">#636262</color>
+
+    <color name="action_bar">#FF000000</color>
+    <color name="nav_bar">#FFFFFF</color>
+
+
+    <color name="material_dialog">#86052323</color>
 </resources>
