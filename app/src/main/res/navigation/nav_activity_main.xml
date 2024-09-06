@@ -44,21 +44,21 @@
 <!--        android:name="com.iitism.srijan24.ui.SponsorsFragment"-->
 <!--        android:label="Sponsors"-->
 <!--        tools:layout="@layout/fragment_sponsors" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/coreTeamFragment"-->
-<!--        android:name="com.iitism.srijan24.ui.CoreTeamFragment"-->
-<!--        android:label="Core Team"-->
-<!--        tools:layout="@layout/fragment_core_team" />-->
+    <fragment
+        android:id="@+id/coreTeamFragment"
+        android:name="com.iitism.concetto_24.ui.CoreTeamFragment"
+        android:label="Core Team"
+        tools:layout="@layout/fragment_core_team" />
 <!--    <fragment-->
 <!--        android:id="@+id/contactFragment"-->
 <!--        android:name="com.iitism.srijan24.ui.ContactFragment"-->
 <!--        android:label="Contact Us"-->
 <!--        tools:layout="@layout/fragment_contact" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/aboutUsFragment"-->
-<!--        android:name="com.iitism.srijan24.ui.AboutUsFragment"-->
-<!--        android:label="fragment_about_us"-->
-<!--        tools:layout="@layout/fragment_about_us" />-->
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.iitism.concetto_24.ui.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 <!--    <fragment-->
 <!--        android:id="@+id/announcementsFragment"-->
 <!--        android:name="com.iitism.srijan24.ui.AnnouncementsFragment"-->
