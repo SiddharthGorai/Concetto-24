@@ -39,7 +39,8 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.junit)
+    implementation (libs.gson)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -48,7 +49,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.runtime.ktx)
-
+    implementation(libs.circleimageview)
     implementation(libs.glide)
     implementation(libs.picasso)
     testImplementation(libs.junit)
