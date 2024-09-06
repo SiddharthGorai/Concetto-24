@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@drawable/iv_upsidedown"
+        android:src="@drawable/nav_back"
         android:contentDescription="concetto"
         tools:ignore="HardcodedText" />
 

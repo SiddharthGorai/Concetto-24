@@ -35,9 +35,9 @@
                     android:icon="@drawable/ic_sponsors"
                     android:title="Past Sponsors" />
 
-                <item android:id="@+id/plansFragmentDrawer"
-                    android:icon="@drawable/ic_plans"
-                    android:title="Plans" />
+                <item android:id="@+id/campusAmbassadorFragment"
+                    android:icon="@drawable/ic_ambassador"
+                    android:title="Campus Ambassador" />
 
                 <item android:id="@+id/profileFragment"
                     android:icon="@drawable/ic_person"

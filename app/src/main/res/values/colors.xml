@@ -7,6 +7,7 @@
     <color name="bg">#00000000</color>
     <color name="progress_bar">#CC000000</color>
     <!--    <color name="bgLight">#33FFEB3B</color>-->
+    <color name="appBartext">#FAE2DC</color>
 
     <color name="bgBackDark">#E6052323</color>
     <color name="bgLight">#86052323</color>
@@ -14,10 +15,11 @@
     <color name="alternate">#1F1E1E</color>
     <color name="bgAlternate">#919191</color>
 
-    <color name="primary">#FBE10E</color>
-    <color name="primary2">#FFED58</color>
+
+    <color name="primary">#5B463C</color>
+    <color name="primary2">#5B463C</color>
     <color name="secondary">#FF000000</color>
-    <color name="primaryTranslucent">#90FBE10E</color>
+    <color name="primaryTranslucent">#635B463C</color>
 
     <color name="text">#FFFFFF</color>
     <!--    <color name="text">#FF000000</color>-->
