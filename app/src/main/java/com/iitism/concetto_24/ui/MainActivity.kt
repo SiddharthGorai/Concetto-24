@@ -105,9 +105,7 @@ class MainActivity : AppCompatActivity(){
 //        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         val isISMite = preferences.getString("isISMite", "") ?: ""
 
-        if (isISMite == "true") {
-            binding.navView.menu.findItem(R.id.plansFragmentDrawer).isVisible = false
-        }
+
 
         dismissDialogAfterDelay()
 //        FirebaseMessaging.getInstance().subscribeToTopic(topic).addOnCompleteListener {
@@ -142,7 +140,7 @@ class MainActivity : AppCompatActivity(){
                 R.id.aboutUsFragment,
                 R.id.coreTeamFragment,
                 R.id.contactFragment,
-                R.id.plansFragmentDrawer
+                R.id.campusAmbassadorFragment
             ), binding.drawerLayout
         )
 
@@ -185,7 +183,7 @@ class MainActivity : AppCompatActivity(){
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
                 R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
                 R.id.contactFragment -> binding.navView.setCheckedItem(R.id.contactFragment)
-                R.id.plansFragmentDrawer -> binding.navView.setCheckedItem(R.id.plansFragmentDrawer)
+                R.id.campusAmbassadorFragment -> binding.navView.setCheckedItem(R.id.campusAmbassadorFragment)
                 else -> binding.navView.setCheckedItem(R.id.homeFragment)
             }
             binding.appBar.tvTitle.text = when (destination.id) {
@@ -200,7 +198,7 @@ class MainActivity : AppCompatActivity(){
                 R.id.coreTeamFragment -> "Core Team"
                 R.id.contactFragment -> "Contact Us"
                 R.id.singleEventFragment -> "Events"
-                R.id.plansFragmentDrawer -> "Plans"
+                R.id.campusAmbassadorFragment -> "Campus Ambassador"
                 else -> "Srijan 24"
             }
 
@@ -241,10 +239,7 @@ class MainActivity : AppCompatActivity(){
         val isISMite = preferences.getString("isISMite", "") ?: ""
         val token = preferences.getString("token", "") ?: ""
 
-        if (isISMite == "true") {
-            binding.navView.menu.findItem(R.id.plansFragmentDrawer).isVisible = false
 
-        }
 
         if(token.isNotEmpty()) {
 

@@ -102,7 +102,7 @@ class HomeFragment : Fragment() {
                 try {
                     val currentDate = Date()
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    val futureDate: Date = dateFormat.parse("2024-02-02 00:00:00")!!
+                    val futureDate: Date = dateFormat.parse("2024-10-16 00:00:00")!!
                     if (!currentDate.after(futureDate)) {
                         var diff: Long = (futureDate.time
                                 - currentDate.time)
@@ -120,7 +120,7 @@ class HomeFragment : Fragment() {
                     }
                     else {
                         countDownSrijanEnd()
-                        binding.textCounterDown.text = "Srijan'23 is Live"
+                        binding.textCounterDown.text = "Concetto'24 is Live"
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -142,7 +142,7 @@ class HomeFragment : Fragment() {
                 try {
                     val currentDate = Date()
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    val futureDate: Date = dateFormat.parse("2024-02-05 00:00:00")!!
+                    val futureDate: Date = dateFormat.parse("2024-10-18 00:00:00")!!
                     if (!currentDate.after(futureDate)) {
 
                         var diff: Long = (futureDate.time
@@ -160,7 +160,7 @@ class HomeFragment : Fragment() {
                         binding.txtSecond.text = "" + String.format("%02d",seconds)
                     }
                     else {
-                        binding.textCounterDown.text = "Srijan'23 is  Over"
+                        binding.textCounterDown.text = "Concetto'24 is  Over"
                         binding.txtDay.visibility = View.INVISIBLE
                         binding.txtHour.visibility = View.INVISIBLE
                         binding.txtMinute.visibility = View.INVISIBLE
