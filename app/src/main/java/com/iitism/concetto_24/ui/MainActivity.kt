@@ -23,6 +23,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.iitism.concetto_24.R
+import com.iitism.concetto_24.auth.LoginSignup
 import com.iitism.concetto_24.databinding.ActivityMainBinding
 
 
@@ -55,10 +56,10 @@ class MainActivity : AppCompatActivity(){
             binding.appBar.btnLogOut.visibility = View.VISIBLE
             binding.appBar.btnProfilehome.visibility = View.GONE
         }
-//
-//        binding.appBar.btnProfilehome.setOnClickListener {
-//            startActivity(Intent(this, LoginSignupActivity::class.java))
-//        }
+
+        binding.appBar.btnProfilehome.setOnClickListener {
+            startActivity(Intent(this, LoginSignup::class.java))
+        }
 
 //        binding.appBar.btnLogOut.setOnClickListener {
 //            val logOutDialog = layoutInflater.inflate(R.layout.layout_custom_material_dialog, null)
