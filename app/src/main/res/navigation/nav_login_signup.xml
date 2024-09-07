@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.iitism.srijan24.ui.LoginFragment"
+        android:name="com.iitism.concetto_24.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -15,13 +15,10 @@
             app:destination="@id/signupFragment"
             app:popUpTo="@id/nav_login_signup"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_loginFragment_to_plansFragment"
-            app:destination="@id/plansFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.iitism.srijan24.ui.SignupFragment"
+        android:name="com.iitism.concetto_24.auth.SignupFragment"
         android:label="SignupFragment"
         tools:layout="@layout/fragment_signup">
         <action
@@ -33,22 +30,13 @@
             android:id="@+id/action_signupFragment_to_otpFragment"
             app:destination="@id/otpFragment" />
 
-        <action
-            android:id="@+id/action_signupFragment_to_plansFragment"
-            app:destination="@id/plansFragment"/>
     </fragment>
 
-    <fragment
-        android:id="@+id/plansFragment"
-        android:name="com.iitism.srijan24.ui.PlansFragment"
-        android:label="fragment_plans"
-        tools:layout="@layout/fragment_plans">
 
-    </fragment>
 
     <fragment
         android:id="@+id/otpFragment"
-        android:name="com.iitism.srijan24.ui.OtpFragment"
+        android:name="com.iitism.concetto_24.auth.OtpFragment"
         android:label="fragment_otp"
         tools:layout="@layout/fragment_otp" >
         <argument

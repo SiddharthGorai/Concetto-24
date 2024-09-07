@@ -3,12 +3,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
-
+    <color name="primaryDark">#FF7900</color>
     <color name="bg">#00000000</color>
     <color name="progress_bar">#CC000000</color>
     <!--    <color name="bgLight">#33FFEB3B</color>-->
     <color name="appBartext">#FAE2DC</color>
-
+    <color name="cardBgColor">#372916</color>
+    <color name="btnRegular">#FF7900</color>
     <color name="bgBackDark">#E6052323</color>
     <color name="bgLight">#86052323</color>
     <!--    <color name="brown">#723B14</color>-->
