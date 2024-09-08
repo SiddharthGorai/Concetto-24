@@ -1,23 +1,27 @@
 package com.iitism.concetto_24.auth
 
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.databinding.FragmentLoginBinding
+import com.iitism.concetto_24.models.LoginRequest
+import com.iitism.concetto_24.models.LoginResponse
+import com.iitism.concetto_24.services.AuthClient
+import com.iitism.concetto_24.ui.MainActivity
+import com.iitism.concetto_24.utils.SharedPrefsHelper
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.regex.Pattern
 
 
 class LoginFragment : Fragment() {
@@ -25,7 +29,6 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     //private lateinit var viewModel: LoginViewModel
-    private lateinit var dialog: Dialog
 
 
     override fun onCreateView(
@@ -33,172 +36,168 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater)
-        //initializeDialog()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-       // viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-
         binding.registerTextView.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_signupFragment2)
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
-        //binding.loginBtn.setOnClickListener {
-//            if (validateEmail() && validatePassword())
-//                loginAndRedirect()
-//        }
+        binding.btnLogin.setOnClickListener {
+            if (checkForm())
+                login()
+        }
 
     }
 
-//    private fun loginAndRedirect() {
-//        dialog.show()
-//        val request = LoginDataModel()
-//        binding.apply {
-//            request.apply {
-//                email = etEmail.text.toString()
-//                password = etPassword.text.toString()
-//            }
-//        }
-//
-//
-//        viewModel.checkCredentials(
-//            request
-//        ) { code ->
-//            Log.d("response code login", code.toString())
-//            when (code) {
-//                500 -> {
-//                    dialog.dismiss()
-//                    Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
-//                }
-//
-//
-//                422 -> {
-//                    dialog.dismiss()
-//                    Toast.makeText(context, "User not found", Toast.LENGTH_SHORT).show()
-//                }
-//
-//                403 -> {
-//                    dialog.dismiss()
-//                    Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_SHORT).show()
-//                }
-//
-//                200 -> {
-//                    dialog.dismiss()
-//                    val preferences = requireActivity().getSharedPreferences(
-//                        "MyPreferences",
-//                        Context.MODE_PRIVATE
-//                    )
-//
-//                    preferences.edit().putString("token", viewModel.responseBody!!.token)
-//                        .apply()
-//                    preferences.edit().putString("email", binding.etEmail.text.toString().trim())
-//                        .apply()
-//                    if (isISMite()) {
-//                        preferences.edit().putString("isISMite", "true").apply()
-//
-//                    } else {
-//                        preferences.edit().putString("isISMite", "false").apply()
-//
-//                    }
-//                    val jwt = JWT(viewModel.responseBody!!.token)
-//                    val userId: String? = jwt.getClaim("UserId").asString()
-//
-//                    if (userId != null) {
-//                        preferences.edit().putString("userId", userId).apply()
-//                    }
-//
-//                    Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
-//                    startActivity(Intent(requireContext(), MainActivity::class.java))
-//                    activity?.finish()
-//                }
-//
-//                1000 -> {
-//                    dialog.dismiss()
-//                    Toast.makeText(context, "Internal server error", Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//
-//                404 -> {
-//                    dialog.dismiss()
-//                    Toast.makeText(context, "Internet error, please try again", Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//
-//                else -> {
-//                    dialog.dismiss()
-//                    Toast.makeText(context, "Unexpected error occurred", Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//            }
-////
-//        }
-//    }
+    private fun login() {
+        val email = binding.etEmail.text.toString().trim()
+        val password = binding.etPassword.text.toString().trim()
 
-//    private fun isISMite(): Boolean {
-//
-//        return binding.etEmail.text.toString().trim().endsWith("@iitism.ac.in")
-//
-//    }
+        val loginRequest = LoginRequest(email, password)
+        val call = AuthClient.authService.login(loginRequest)
+
+        call.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                Log.d("Register", response.code().toString())
+                when(response.code()) {
+                    200 -> {
+                        Toast.makeText(context, "Logged In Successfully!", Toast.LENGTH_SHORT).show()
+
+                        val response = response.body()
+                        if(response?.user != null && response.accessToken != null && response.refreshToken != null) {
+                            val user = response.user
+                            val accessToken = response.accessToken
+                            val refreshToken = response.refreshToken
+
+                            Log.d("Login AT", accessToken)
+                            Log.d("Login RT", refreshToken)
+
+                            val prefsHelper = SharedPrefsHelper(requireContext())
+                            prefsHelper.saveUser(user)
+                            prefsHelper.saveAccessToken(accessToken)
+                            prefsHelper.saveRefreshToken(refreshToken)
+
+                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+                        } else {
+                            Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    401 -> {
+                        Toast.makeText(context, "Incorrect Email or Password.", Toast.LENGTH_SHORT).show()
+                    }
+
+                    403 -> {
+                        Toast.makeText(context, "Please verify your account first", Toast.LENGTH_SHORT).show()
+
+                        // Attempt to retrieve the body
+                        val responseData = response.body()
+
+                        // If responseData is null, try to parse the error body
+                        if (responseData == null) {
+                            response.errorBody()?.let { errorBody ->
+                                val errorBodyString = errorBody.string()
+                                Log.d("Login", "Error Body: $errorBodyString")
+
+                                // Parse the error body string into LoginResponse (if structured as JSON)
+                                try {
+                                    val parsedErrorResponse = Gson().fromJson(errorBodyString, LoginResponse::class.java)
+
+                                    val user = parsedErrorResponse.user
+                                    val accessToken = parsedErrorResponse.accessToken
+                                    val refreshToken = parsedErrorResponse.refreshToken
+
+                                    if (user != null && accessToken != null && refreshToken != null) {
+                                        Log.d("Login AT", accessToken)
+                                        Log.d("Login RT", refreshToken)
+
+                                        // Save the user and tokens to SharedPreferences
+                                        val prefsHelper = SharedPrefsHelper(requireContext())
+                                        prefsHelper.saveUser(user)
+                                        prefsHelper.saveAccessToken(accessToken)
+                                        prefsHelper.saveRefreshToken(refreshToken)
+
+                                        // Navigate to OTP verification screen
+                                        val action =
+                                            LoginFragmentDirections.actionLoginFragmentToOtpFragment(user.email)
+                                        findNavController().navigate(action)
+                                    } else {
+                                        Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show()
+                                    }
+                                } catch (e: JsonSyntaxException) {
+                                    Toast.makeText(context, "Error parsing server response", Toast.LENGTH_SHORT).show()
+                                }
+                            } ?: run {
+                                Toast.makeText(context, "Something went wrong...", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            // Handle responseData as needed
+                            val user = responseData.user
+                            val accessToken = responseData.accessToken
+                            val refreshToken = responseData.refreshToken
+
+                            if (user != null && accessToken != null && refreshToken != null) {
+                                // Save to SharedPreferences
+                                val prefsHelper = SharedPrefsHelper(requireContext())
+                                prefsHelper.saveUser(user)
+                                prefsHelper.saveAccessToken(accessToken)
+                                prefsHelper.saveRefreshToken(refreshToken)
+
+                                // Navigate to OTP verification screen
+                                val action = LoginFragmentDirections.actionLoginFragmentToOtpFragment(user.email)
+                                findNavController().navigate(action)
+                            } else {
+                                Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
 
 
-//    private fun validateEmail(): Boolean {
-//        var error: String? = null
-//        val email = binding.etEmail.text.toString().trim()
-//        if (email.isEmpty()) {
-//            error = "Please enter your email."
-//        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//            error = "Invalid email address."
-//        }
-//
-//        if (error != null) {
-//            binding.etEmail.error = error
-//        } else {
-//            binding.etEmail.error = null
-//        }
-//
-//        return error == null
-//    }
+                    else -> {
+                        Toast.makeText(context, "Unexpected Error Occurred", Toast.LENGTH_SHORT)
+                            .show()
+                        Log.d("Register", "Unexpected Error Occurred ${response.code()}")
+                    }
+                }
+            }
 
-//    private fun validatePassword(): Boolean {
-//        var error: String? = null
-//        val password = binding.etPassword.text.toString().trim()
-//        if (password.isEmpty()) {
-//            error = "Please enter your password."
-//        } else if (password.length < 6) {
-//            error = "Password is too short."
-//        }
-//
-//        if (error != null) {
-//            binding.etPassword.error = error
-//        } else {
-//            binding.etPassword.error = null
-//        }
-//
-//        return error == null
-//    }
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                // Handle failure
+            }
+        })
+    }
 
-    private fun initializeDialog() {
-        dialog = Dialog(requireContext())
-        dialog.setContentView(R.layout.progress_bar)
-        dialog.setCancelable(false)
-        val layoutParams = WindowManager.LayoutParams().apply {
-            width = WindowManager.LayoutParams.MATCH_PARENT
-            height = WindowManager.LayoutParams.MATCH_PARENT
-        }
-        dialog.window?.attributes = layoutParams
-        if (dialog.window != null) {
-            dialog.window!!.setBackgroundDrawable(
-                ColorDrawable(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.progress_bar
-                    )
-                )
-            )
+    private fun showToastAndReturnFalse(message: String): Boolean {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        return false
+    }
+
+    private fun checkForm(): Boolean {
+        val email = binding.etEmail.text.toString().trim()
+        val password = binding.etPassword.text.toString().trim()
+
+        return when {
+            email.isEmpty() -> showToastAndReturnFalse("Please enter your email!")
+            password.isEmpty() -> showToastAndReturnFalse("Please enter your password!")
+            !isValidEmail(email) -> showToastAndReturnFalse("Entered email is invalid!")
+            else -> true
         }
     }
+
+    private fun isValidEmail(email: String): Boolean {
+        val baseRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+        return Pattern.matches(baseRegex, email)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
