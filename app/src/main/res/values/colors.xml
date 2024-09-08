@@ -30,5 +30,24 @@
     <color name="nav_bar">#FFFFFF</color>
 
 
+    <color name="gray">#B0B0B0</color>
+
+
+    <color name="primaryLight">#FF9800</color>
+
+    <color name="bgColor">#01101B</color>
+    <color name="bgLightColor">#1E1B1B</color>
+    <color name="statusBarColor">#403d39</color>
+    <!--    <color name="statusBarColor">#01182A</color>-->
+    <color name="iconColor">#FFFFFFFF</color>
+    <color name="bottomNavColor">#FF000000</color>
+    <!--    <color name="bottomNavColor">#01182A</color>-->
+    <color name="textColor">#FFFFFFFF</color>
+    <color name="textLightColor">#C6C5C5</color>
+    <color name="textErrorColor">#FF0000</color>
+    <color name="userHighlightColor">#4CAF50</color>
+
+    <color name="btnAlter">#000080</color>
+
     <color name="material_dialog">#86052323</color>
 </resources>

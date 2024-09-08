@@ -2,6 +2,7 @@
 agp = "8.5.1"
 circleimageview = "3.1.0"
 core = "11.1.0"
+firebaseBom = "33.2.0"
 glide = "4.16.0"
 gson = "2.10.1"
 kotlin = "1.9.0"
@@ -23,11 +24,14 @@ okhttp = "4.11.0"
 retrofit = "2.9.0"
 loggingInterceptor = "4.10.0"
 securityCryptoKtx = "1.0.0"
+swiperefreshlayout = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
 core = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "core" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
