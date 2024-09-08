@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -72,5 +73,12 @@ dependencies {
 // Download + Preprocess:
     implementation ("com.cloudinary:cloudinary-android-download:2.5.0")
     implementation ("com.cloudinary:cloudinary-android-preprocess:2.5.0")
+
+    //Announcements and Notifications
+    implementation(libs.firebase.messaging.ktx)
+    implementation (libs.androidx.swiperefreshlayout)
+    //implementation (libs.firebase.messaging)
+    //implementation(platform(libs.firebase.bom))
+    implementation(platform(libs.firebase.bom))
 
 }
