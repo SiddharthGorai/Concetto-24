@@ -22,6 +22,7 @@
         android:textSize="28sp"/>
 
     <TextView
+        android:id="@+id/tvCollegeEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#D6D6D6"
@@ -122,16 +123,17 @@
 
     </LinearLayout>
 
-    <!--    <com.noobcode.otpview.OTPView-->
-    <!--        android:id="@+id/otpView"-->
-    <!--        android:layout_marginTop="30dp"-->
-    <!--        android:layout_width="300dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_centerInParent="true"-->
-    <!--        android:textColor="#F4B33E"-->
-    <!--        app:borderThickness="6"-->
-    <!--        app:otpLength="6"-->
-    <!--        app:spaceBetween="20" />-->
+    <TextView
+        android:id="@+id/tvResendOtp"
+        style="@style/h4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:text="Resend OTP"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/primaryDark"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnVerifyOtp"
         android:layout_margin="20dp"
