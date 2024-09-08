@@ -44,11 +44,11 @@
         android:label="Sponsors"
         tools:layout="@layout/fragment_sponsors" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/contactFragment"-->
-<!--        android:name="com.iitism.srijan24.ui.ContactFragment"-->
-<!--        android:label="Contact Us"-->
-<!--        tools:layout="@layout/fragment_contact" />-->
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.iitism.concetto_24.ui.ContactFragment"
+        android:label="Contact Us"
+        tools:layout="@layout/fragment_contact" />
         <fragment
             android:id="@+id/coreTeamFragment"
             android:name="com.iitism.concetto_24.ui.CoreTeamFragment"
