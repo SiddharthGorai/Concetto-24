@@ -30,16 +30,16 @@ class CoreTeamFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val CoreTeamRecyclerView : RecyclerView = view.findViewById(R.id.recycler_view_c)
+        //val CoreTeamRecyclerView : RecyclerView = view.findViewById(R.id.recycler_view_c)
 
-        CoreTeamRecyclerView.layoutManager = LinearLayoutManager(context)
-        CoreTeamRecyclerView.setHasFixedSize(true)
-
-        viewModel = CoreTeamViewModel(requireContext())
-        viewModel.getCoreTeamList()
-
-        val itemAdapter = CoreTeamAdapter(viewModel.coreTeamList)
-        CoreTeamRecyclerView.adapter = itemAdapter
+//        CoreTeamRecyclerView.layoutManager = LinearLayoutManager(context)
+//        CoreTeamRecyclerView.setHasFixedSize(true)
+//
+//        viewModel = CoreTeamViewModel(requireContext())
+//        viewModel.getCoreTeamList()
+//
+//        val itemAdapter = CoreTeamAdapter(viewModel.coreTeamList)
+//        CoreTeamRecyclerView.adapter = itemAdapter
 
     }
 

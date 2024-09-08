@@ -59,10 +59,18 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
+
+    implementation ("com.cloudinary:cloudinary-android:2.5.0")
+
+// Download + Preprocess:
+    implementation ("com.cloudinary:cloudinary-android-download:2.5.0")
+    implementation ("com.cloudinary:cloudinary-android-preprocess:2.5.0")
 
 }

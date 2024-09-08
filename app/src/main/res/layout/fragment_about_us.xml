@@ -46,7 +46,7 @@
                     style="@style/h5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
                     android:gravity="center_horizontal"
                     android:justificationMode="inter_word"
@@ -177,22 +177,23 @@
                     android:textColor="@color/text"
                     tools:targetApi="o" />
 
-                <!--                <TextView-->
-                <!--                    android:id="@+id/tvCoConvenerMessage"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:text="Header"-->
-                <!--                    android:textColor="@color/text"-->
-                <!--                    android:gravity="center_horizontal"-->
-                <!--                    android:layout_gravity="center_horizontal"-->
-                <!--                    style="@style/h4"-->
-                <!--                    android:layout_margin="10dp"/>-->
+                                <TextView
+                                    android:id="@+id/tvCoConvener1Message"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Header"
+                                    android:textColor="@color/text"
+                                    android:gravity="center_horizontal"
+                                    android:layout_gravity="center_horizontal"
+                                    style="@style/h5"
+                                    android:layout_margin="10dp"/>
 
             </LinearLayout>
 
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!--
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivCoConvener2"
             android:layout_width="100dp"
@@ -247,7 +248,9 @@
 
 
         </com.google.android.material.card.MaterialCardView>
+        -->
 
+        <!--
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivTreasurer"
             android:layout_width="100dp"
@@ -302,6 +305,7 @@
 
 
         </com.google.android.material.card.MaterialCardView>
+        -->
 
     </LinearLayout>
 
