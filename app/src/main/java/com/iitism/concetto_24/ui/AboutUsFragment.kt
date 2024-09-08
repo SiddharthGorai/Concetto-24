@@ -28,77 +28,82 @@ class AboutUsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvAboutUs.text="Established in 1926, the Indian Institute of Technology (Indian School of " +
-                "Mines) Dhanbad, erstwhile Indian School of Mines Dhanbad, stands as a " +
-                "prestigious engineering and research institution in the heart of the Coal " +
-                "Capital of India, Dhanbad. Approaching its centenary, IIT (ISM) holds " +
-                "the esteemed Institute of National Importance and has evolved from its " +
-                "initial focus on Earth Sciences and Engineering to encompass 18 academic " +
-                "departments across various technical disciplines. " +
-                "Standing as the third oldest among IITs, IIT (ISM) has experienced " +
-                "significant growth beyond its roots in Earth Sciences. Notably, it " +
-                "achieved the 26th position in the QS World University Rankings for " +
-                "Mining and Mineral Engineering in 2022. The institute admits " +
-                "undergraduate students through the Joint Entrance Examination " +
-                "(Advanced), making it a beacon of academic excellence and innovation " +
-                "that attracts students nationwide. " +
-                "Integral to the institute's vibrant culture is \"SRIJAN,\" a Socio-Cultural " +
-                "Festival that has been captivating audiences in Eastern India since 1977. With over 30,000 annual attendees from 200 colleges nationwide, " +
-                "SRIJAN serves as a dynamic platform for budding talents. The festival, " +
-                "boasting a prize pool exceeding INR 7.5 lakhs, provides participants with " +
-                "a unique opportunity to showcase their creativity, personality, and " +
-                "talents, fostering interaction and skill enhancement on a national scale.\n"
+        binding.tvAboutUs.text="CONCETTO is the premier annual Techno-Management Fest hosted by the " +
+                "prestigious Indian Institute of Technology (Indian School of Mines), " +
+                "Dhanbad. It stands as a celebration of innovation and talent, merging " +
+                "technology and management prowess. With the largest participation in " +
+                "Eastern India, CONCETTO attracts over 20,000 enthusiasts each year." +
+                " More than just an event, CONCETTO is a dynamic platform where " +
+                "participants challenge their technical acumen, broaden their " +
+                "horizons through expert workshops, and enjoy electrifying " +
+                "performances as the sun sets." +
+                " This year, join us for CONCETTO '24, where we invite you to explore new " +
+                "horizons from 4th to 6th October. Stay tuned as we unveil an exciting " +
+                "new theme: ‘VINTAGE VISIONS IN A MODERN MATRIX’ . The fest promises a " +
+                "diverse array of technical and managerial events that will leave you " +
+                "enthralled." +
+                " CONCETTO fuels the dreams of engineering enthusiasts, providing a " +
+                "launchpad for innovation and excellence. Participants stand to win " +
+                "certificates, exciting goodies, and prizes worth lakhs. Step into a " +
+                "world where technology meets creativity, where learning is a " +
+                "celebration, and every moment weaves unforgettable memories.\n"
 
-        binding.tvConvenerName.text="Prof. Sanjoy Mandal"
+        binding.tvConvenerName.text="Prof. Ajit Kumar"
 
-        binding.tvConvenerMessage.text="Identification of a country’s civilization has always been through the " +
-                "culture its people follow and promote. It generates a sense of unity via " +
-                "common values, beliefs, and customs and standards. When knowledge " +
-                "and education are promoted in a culturally sensitive setting, everyone " +
-                "benefits—individuals as well as the society, nation, or world at large. We are proud of India's distinct culture, which represents the diversity of " +
-                "the country. Its innate creativity and culture are synonymous with much " +
-                "of its social, economic, and other activities. " +
-                "In keeping with the aforementioned, the IIT (ISM) Dhanbad's three-day " +
-                "Annual Socio-Cultural Srijan Festival, SRIJAN '24, aims to foster a sense " +
-                "of solidarity and unity in diversity through a range of events honouring " +
-                "the various customs and cultures across our nation. The ideas of the next " +
-                "generation drive our nation's continuous growth. " +
-                "In response, SRIJAN '24 offers a friendly setting for showcasing one's " +
-                "abilities and creative concepts that could advance social causes. It " +
-                "includes a variety of competitions where participants can polish their " +
-                "skills in dance, singing, poetry writing, arts, and other areas in addition to " +
-                "competing, all leading up to the much-anticipated gala star night. Warmest greetings from Team SRIJAN '24, who look forward to your " +
-                "kind attendance at the socio-cultural extravaganza to mark this " +
-                "significant milestone in IIT (ISM) Dhanbad's history.\n"
+        binding.tvConvenerMessage.text="As Edward Teller once said, \"The science of today is the technology of " +
+                "tomorrow.\" In an era where the future is constantly being reimagined, " +
+                "today's youth yearn for a stage to showcase their unique talents. " +
+                "CONCETTO'24: Weaving Timeless Innovation offers such a stage, where " +
+                "tradition meets modernity. This year's theme, \"Vintage Vision in " +
+                "Modern Matrix,\" celebrates the harmony between classic ingenuity and " +
+                "contemporary technology. The fest pays tribute to the enduring " +
+                "legacy of vintage innovations while providing a platform for " +
+                "students to merge time-honored principles with cutting-edge ideas. " +
+                "This extraordinary event is a testament to the tireless efforts of " +
+                "our dedicated team and the generous support of our sponsors, who " +
+                "have made it all possible.\n"
 
-        binding.tvCoConvener1Name.text="Prof. Arijit Bansal"
+        binding.tvCoConvener1Name.text="Prof. Himanshu Bhusan Mishra"
 
-        binding.tvCoConvener2Name.text="Prof. Suresh K Yatirajula"
+        binding.tvCoConvener1Message.text = "Building tomorrow on the foundations of yesterday, CONCETTO'24: " +
+                "Weaving Timeless Innovation provides a platform where the " +
+                "brilliance of young minds meets the wisdom of the past. Under this " +
+                "year's theme,\n 'Vintage Vision in Modern Matrix,'\n we explore how the " +
+                "echoes of classic innovations can inspire and shape the cutting-edge " +
+                "technologies of today. This event is not just a celebration of " +
+                "creativity and ingenuity but also a convergence of tradition and " +
+                "modernity. As Co-Conveyor, it is a privilege to be part of this journey, " +
+                "ensuring that the fest remains a beacon of inspiration, where the " +
+                "legacies of yesterday fuel the breakthroughs of tomorrow. We are " +
+                "deeply grateful to our dedicated team and sponsors, whose efforts " +
+                "have made this vision a reality.\n"
 
-        binding.tvTreasurerName.text="Prof. Madhulika Gupta"
+       // binding.tvCoConvener2Name.text="Prof. Suresh K Yatiraju"
+
+       // binding.tvTreasurerName.text="Prof. Madhulika Gupta"
 
         Glide.with(requireContext())
-            .load("https://res.cloudinary.com/dfr1kvie3/image/upload/v1703957539/prof_convener_mojstc.jpg")
+            .load("https://res.cloudinary.com/dgpgsuay1/image/upload/v1725778370/concetto24_convener.jpg")
             .placeholder(R.drawable.logo)
             .centerCrop()
             .into(binding.ivConvener)
 
         Glide.with(requireContext())
-            .load("https://res.cloudinary.com/dkdratnao/image/upload/v1704404941/Co-convenor_xoepnr.png")
+            .load("https://res.cloudinary.com/dgpgsuay1/image/upload/v1725778499/concetto24_coconvener.jpg")
             .placeholder(R.drawable.logo)
             .centerCrop()
             .into(binding.ivCoConvener1)
 
-        Glide.with(requireContext())
-            .load("https://res.cloudinary.com/dkdratnao/image/upload/v1704403824/Co-convenor2_qp0smn.png")
-            .placeholder(R.drawable.logo)
-            .centerCrop()
-            .into(binding.ivCoConvener2)
-
-        Glide.with(requireContext())
-            .load("https://res.cloudinary.com/dkdratnao/image/upload/v1704473056/madhulika_gupta_ye3xav.jpg")
-            .placeholder(R.drawable.logo)
-            .centerCrop()
-            .into(binding.ivTreasurer)
+//        Glide.with(requireContext())
+//            .load("https://res.cloudinary.com/dkdratnao/image/upload/v1704403824/Co-convenor2_qp0smn.png")
+//            .placeholder(R.drawable.logo)
+//            .centerCrop()
+//            .into(binding.ivCoConvener2)
+//
+//        Glide.with(requireContext())
+//            .load("https://res.cloudinary.com/dkdratnao/image/upload/v1704473056/madhulika_gupta_ye3xav.jpg")
+//            .placeholder(R.drawable.logo)
+//            .centerCrop()
+//            .into(binding.ivTreasurer)
     }
 }
