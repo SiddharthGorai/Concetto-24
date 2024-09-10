@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.gson)
     implementation(libs.picasso)
+    implementation(libs.cronet.embedded)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     implementation(libs.core)
     androidTestImplementation(libs.androidx.junit)

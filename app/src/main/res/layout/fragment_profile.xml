@@ -1,149 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProfileFragment"
-    tools:ignore="hardcodedText">
+    tools:context=".ui.ProfileFragment">
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        app:cardBackgroundColor="@color/cardBgColor"
+        app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            app:cardBackgroundColor="@color/cardBgColor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded">
+            android:layout_height="wrap_content"
+            android:padding="24dp"
+            android:orientation="vertical">
 
-            <LinearLayout
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primaryDark"
+                style="@style/h1"
+                android:layout_gravity="center"
+                android:textSize="24sp"
+                android:text="Your account details" />
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Name"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:textColor="@color/text"
+                android:background="@drawable/border2"
+                android:padding="10dp"
+                android:text="John Doe"  />
 
-                <TextView
-                    style="@style/h2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Profile"
-                    android:textColor="@color/primaryDark" />
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Email"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:background="@drawable/border2"
+                android:padding="10dp"
+                android:text="johndoe@example.com"
+                android:enabled="false"
+                android:focusable="false" />
 
-                <TextView
-                    style="@style/h4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="16dp"
-                    android:padding="5dp"
-                    android:text="Name"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Referal Code"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvName"
-                    style="@style/h4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="John Doe"
-                    android:textColor="@color/text" />
+            <TextView
+                android:id="@+id/tvReferalCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:background="@drawable/border2"
+                android:padding="10dp"
+                android:text="+1234567890"
+            android:enabled="false"
+            android:focusable="false" />
 
-                <TextView
-                    style="@style/h4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="16dp"
-                    android:padding="5dp"
-                    android:text="Email"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnLogout"
+                style="@style/btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="LOGOUT" />
 
-                <TextView
-                    android:id="@+id/tvEmail"
-                    style="@style/h4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="john.doe@example.com"
-                    android:textColor="@color/text" />
+        </LinearLayout>
 
-                <TextView
-                    style="@style/h4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="16dp"
-                    android:padding="5dp"
-                    android:text="Contact Number"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/tvPhone"
-                    style="@style/h4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="+1 234 567 890"
-                    android:textColor="@color/text" />
-
-                <TextView
-                    style="@style/h4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="16dp"
-                    android:padding="5dp"
-                    android:text="IIT ISM Student"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvStudentStatus"
-                    style="@style/h4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Yes"
-                    android:textColor="@color/text" />
-
-                <Button
-                    android:id="@+id/btnEditProfile"
-                    style="@style/btn"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="24dp"
-                    android:text="Edit Profile" />
-                <Button
-                    android:id="@+id/btnLogout"
-                    android:backgroundTint="#F1A820"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="24dp"
-                    android:text="Logout" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-
-    </LinearLayout>
-</ScrollView>
+</FrameLayout>

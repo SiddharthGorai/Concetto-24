@@ -25,6 +25,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.auth.LoginSignup
 import com.iitism.concetto_24.databinding.ActivityMainBinding
+import com.iitism.concetto_24.utils.SharedPrefsHelper
 
 
 class MainActivity : AppCompatActivity(){
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var sharedPrefsHelper: SharedPrefsHelper
 
     private lateinit var tShirtSize: String
     private lateinit var address: String
@@ -48,17 +50,25 @@ class MainActivity : AppCompatActivity(){
         askNotificationAndSmsPermission()
 
         val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        var token = preferences.getString("token", "") ?: ""
-        if (token.isEmpty()) {
-            binding.appBar.btnLogOut.visibility = View.GONE
-            binding.appBar.btnProfilehome.visibility = View.VISIBLE
-        } else {
-            binding.appBar.btnLogOut.visibility = View.VISIBLE
-            binding.appBar.btnProfilehome.visibility = View.GONE
-        }
-
+//        var token = preferences.getString("token", "") ?: ""
+//        if (token.isEmpty()) {
+//            binding.appBar.btnLogOut.visibility = View.GONE
+//            binding.appBar.btnProfilehome.visibility = View.VISIBLE
+//        } else {
+//            binding.appBar.btnLogOut.visibility = View.VISIBLE
+//            binding.appBar.btnProfilehome.visibility = View.GONE
+//        }
+        sharedPrefsHelper=SharedPrefsHelper(this)
+        val user=sharedPrefsHelper.getUser()
         binding.appBar.btnProfilehome.setOnClickListener {
-            startActivity(Intent(this, LoginSignup::class.java))
+            if(user==null)
+            {
+                startActivity(Intent(this, LoginSignup::class.java))
+            }
+            else
+            {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.profileFragment)
+            }
         }
 
 //        binding.appBar.btnLogOut.setOnClickListener {
@@ -136,7 +146,6 @@ class MainActivity : AppCompatActivity(){
                 R.id.announcementsFragment,
                 R.id.merchandiseFragment,
                 R.id.sponsorsFragment,
-                R.id.addAnnouncementFragment,
                 R.id.profileFragment,
                 R.id.aboutUsFragment,
                 R.id.coreTeamFragment,
@@ -179,7 +188,6 @@ class MainActivity : AppCompatActivity(){
                 R.id.announcementsFragment -> binding.navView.setCheckedItem(R.id.announcementsFragment)
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
-                R.id.addAnnouncementFragment -> binding.navView.setCheckedItem(R.id.addAnnouncementFragment)
                 R.id.profileFragment -> binding.navView.setCheckedItem(R.id.profileFragment)
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
                 R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
@@ -193,7 +201,6 @@ class MainActivity : AppCompatActivity(){
                 R.id.announcementsFragment -> "Announcements"
                 R.id.merchandiseFragment -> "Merchandise"
                 R.id.sponsorsFragment -> "Past Sponsors"
-                R.id.addAnnouncementFragment -> "New Announcement"
                 R.id.profileFragment -> "Profile"
                 R.id.aboutUsFragment -> "About Us"
                 R.id.coreTeamFragment -> "Core Team"
@@ -207,13 +214,12 @@ class MainActivity : AppCompatActivity(){
                 binding.appBar.btnProfilehome.visibility = View.GONE
                 binding.appBar.btnLogOut.visibility = View.GONE
             } else {
-                token = preferences.getString("token", "") ?: ""
-                if (token.isEmpty()) {
+                if (user==null) {
                     binding.appBar.btnLogOut.visibility = View.GONE
                     binding.appBar.btnProfilehome.visibility = View.VISIBLE
                 } else {
-                    binding.appBar.btnLogOut.visibility = View.VISIBLE
-                    binding.appBar.btnProfilehome.visibility = View.GONE
+                    binding.appBar.btnLogOut.visibility = View.GONE
+                    binding.appBar.btnProfilehome.visibility = View.VISIBLE
                 }
             }
         }
