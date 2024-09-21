@@ -17,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.adapter.HomeCarouselAdapter
 import com.iitism.concetto_24.databinding.FragmentHomeBinding
+import com.iitism.concetto_24.utils.SharedPrefsHelper
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Timer
@@ -44,9 +45,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         countDownSrijanStart()
-
+        val sharedPref= SharedPrefsHelper(requireContext())
+        val user=sharedPref.getUser()
+        val name=user?.username.toString()
+//        if(user!=null)
+//        binding.usersName.text=name+" !! "
+//        else{
+//            binding.usersName.text="user"+" !! "
+//        }
         val images = arrayOf(
            "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973132/IMG-20240910-WA0054_p41az0.jpg",
             "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973132/IMG-20240910-WA0053_bijxkg.jpg",

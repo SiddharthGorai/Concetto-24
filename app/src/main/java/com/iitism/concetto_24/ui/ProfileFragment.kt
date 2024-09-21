@@ -1,5 +1,6 @@
 package com.iitism.concetto_24.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,6 +19,8 @@ class ProfileFragment : Fragment() {
     private lateinit var tvEmail: TextView
     private lateinit var tvReferallCode: TextView
     private lateinit var btnLogout: Button
+    private lateinit var tvContact:TextView
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,10 +37,11 @@ class ProfileFragment : Fragment() {
         return view
     }
     private fun loadUserData() {
-        val sharedPref:SharedPrefsHelper= SharedPrefsHelper(requireContext())
+        val sharedPref= SharedPrefsHelper(requireContext())
         val user=sharedPref.getUser()
         val name=user?.username.toString()
         val email=user?.email.toString()
+        val contact=user?.contact.toString()
         // Set the data to the TextViews
         tvName.text = name
         tvEmail.text = email

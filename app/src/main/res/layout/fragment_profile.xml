@@ -74,6 +74,27 @@
                 android:text="johndoe@example.com"
                 android:enabled="false"
                 android:focusable="false" />
+<!--            <TextView-->
+<!--                style="@style/h4"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="start"-->
+<!--                android:padding="5dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="Phone No."-->
+<!--                android:textColor="@color/text"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvContact"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColor="@color/text"-->
+<!--                android:background="@drawable/border2"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="9060736250"-->
+<!--                android:enabled="false"-->
+<!--                android:focusable="false" />-->
 
             <TextView
                 style="@style/h4"
