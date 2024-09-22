@@ -2,6 +2,7 @@
 agp = "8.5.1"
 circleimageview = "3.1.0"
 core = "11.1.0"
+firebaseBom = "33.2.0"
 glide = "4.16.0"
 gson = "2.10.1"
 kotlin = "1.9.0"
@@ -19,11 +20,20 @@ navigationUiKtx = "2.8.0"
 navigationRuntimeKtx = "2.8.0"
 firebaseMessagingKtx = "24.0.1"
 picasso = "2.8"
+okhttp = "4.11.0"
+retrofit = "2.9.0"
+loggingInterceptor = "4.10.0"
+securityCryptoKtx = "1.0.0"
+swiperefreshlayout = "1.1.0"
+cronetEmbedded = "119.6045.31"
+recyclerview = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
 core = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "core" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -39,6 +49,13 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 firebase-messaging-ktx = { group = "com.google.firebase", name = "firebase-messaging-ktx", version.ref = "firebaseMessagingKtx" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
+androidx-security-crypto-ktx = { group = "androidx.security", name = "security-crypto-ktx", version.ref = "securityCryptoKtx" }
+cronet-embedded = { group = "org.chromium.net", name = "cronet-embedded", version.ref = "cronetEmbedded" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

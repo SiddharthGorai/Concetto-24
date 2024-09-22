@@ -17,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.adapter.HomeCarouselAdapter
 import com.iitism.concetto_24.databinding.FragmentHomeBinding
+import com.iitism.concetto_24.utils.SharedPrefsHelper
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Timer
@@ -44,16 +45,22 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         countDownSrijanStart()
-
+        val sharedPref= SharedPrefsHelper(requireContext())
+        val user=sharedPref.getUser()
+        val name=user?.username.toString()
+//        if(user!=null)
+//        binding.usersName.text=name+" !! "
+//        else{
+//            binding.usersName.text="user"+" !! "
+//        }
         val images = arrayOf(
-            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848342/xgnkf3oykukuvonrgwrg.png",
-            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848344/wx9jxtcedyqcgayzoy0t.png",
-            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848343/mf7dsivt0tzgkjvlnzzw.png",
-            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848343/c6ncntfglaciucpkhxi3.png",
-            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848342/wuvjptagbmhrsefxue8r.png",
-            "https://res.cloudinary.com/digvpmszg/image/upload/v1705848342/jry9hut8dvpghujngb5y.png"
+           "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973132/IMG-20240910-WA0054_p41az0.jpg",
+            "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973132/IMG-20240910-WA0053_bijxkg.jpg",
+            "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973121/IMG-20240910-WA0055_ue4b8r.jpg",
+           "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973121/IMG-20240910-WA0046_b92t9n.jpg",
+            "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973121/IMG-20240910-WA0051_gfdou9.jpg",
+            "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973562/IMG-20240910-WA0060_nsplld.jpg"
         )
         binding.viewPagerCarousel.adapter = HomeCarouselAdapter(images)
 

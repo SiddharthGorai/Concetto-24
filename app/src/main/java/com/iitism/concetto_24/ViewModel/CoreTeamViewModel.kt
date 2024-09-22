@@ -3,9 +3,9 @@ package com.iitism.concetto_24.ViewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.iitism.concetto_24.Data.CoreTeamDataModel
 import kotlinx.coroutines.launch
 import com.google.gson.Gson
+import com.iitism.concetto_24.data.CoreTeamDataModel
 import java.io.InputStream
 
 

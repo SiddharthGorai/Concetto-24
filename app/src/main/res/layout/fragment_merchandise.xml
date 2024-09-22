@@ -3,12 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MerchandiseFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.EventsFragment">
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/coming_soon"/>-->
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:layout_margin="10dp">
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="5dp"
+           >
+           <androidx.viewpager2.widget.ViewPager2
+               android:id="@+id/view_pager_carousel"
+               android:layout_width="match_parent"
+               android:layout_height="250dp"
+               android:background="@drawable/rounded_image"/>
+       </androidx.cardview.widget.CardView>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Merchandise Fragment" />
+       <Button
+           android:id="@+id/BtnOrder"
+           style="@style/btn"
+           android:layout_width="match_parent"
+           android:layout_marginTop="10dp"
+           android:layout_height="wrap_content"
+           android:text="Place Order" />
+
+   </LinearLayout>
+
 
 </FrameLayout>

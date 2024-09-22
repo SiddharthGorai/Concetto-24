@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -53,15 +55,32 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.gson)
     implementation(libs.picasso)
+    implementation(libs.cronet.embedded)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     implementation(libs.core)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // All:
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
+
     implementation ("com.cloudinary:cloudinary-android:2.5.0")
 
 // Download + Preprocess:
     implementation ("com.cloudinary:cloudinary-android-download:2.5.0")
     implementation ("com.cloudinary:cloudinary-android-preprocess:2.5.0")
+
+    //Announcements and Notifications
+    implementation(libs.firebase.messaging.ktx)
+    implementation (libs.androidx.swiperefreshlayout)
+    //implementation (libs.firebase.messaging)
+    //implementation(platform(libs.firebase.bom))
+    implementation(platform(libs.firebase.bom))
+
 }
