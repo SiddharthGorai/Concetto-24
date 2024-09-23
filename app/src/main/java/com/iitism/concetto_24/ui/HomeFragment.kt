@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
@@ -82,6 +83,14 @@ class HomeFragment : Fragment() {
         })
 
 //        startAutoScroll()
+
+        binding.lecturesIcon4.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_eventsFragment)
+        }
+
+        binding.lecturesIcon3.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_competitionFragment)
+        }
 
         binding.viewPagerCarousel.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

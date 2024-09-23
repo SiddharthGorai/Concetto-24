@@ -14,11 +14,30 @@
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_eventsFragment"
+            app:destination="@id/eventsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_competitionFragment"
+            app:destination="@id/competitionFragment" />
 
 <!--        <action-->
 <!--            android:id="@+id/action_homeFragment_to_qrScanFragment"-->
 <!--            app:destination="@id/qrScanFragment" />-->
     </fragment>
+
+    <fragment
+        android:id="@+id/competitionFragment"
+        android:name="com.iitism.concetto_24.ui.CompetitionFragment"
+        android:label="Competition"
+        tools:layout="@layout/fragment_competition" >
+
+    <action
+        android:id="@+id/action_competitionFragment_to_eventsFragment"
+        app:destination="@id/eventsFragment" />
+    </fragment>
+
+
 
     <fragment
         android:id="@+id/eventsFragment"

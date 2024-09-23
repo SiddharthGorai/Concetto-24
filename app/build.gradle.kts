@@ -71,10 +71,12 @@ dependencies {
 
 
     implementation ("com.cloudinary:cloudinary-android:2.5.0")
+    implementation ("androidx.cardview:cardview:1.0.0")
 
 // Download + Preprocess:
     implementation ("com.cloudinary:cloudinary-android-download:2.5.0")
     implementation ("com.cloudinary:cloudinary-android-preprocess:2.5.0")
+
 
     //Announcements and Notifications
     implementation(libs.firebase.messaging.ktx)
