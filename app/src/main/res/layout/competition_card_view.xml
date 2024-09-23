@@ -6,11 +6,13 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="12dp"
     app:cardElevation="6dp"
-    android:background="@drawable/nav_item_background">
+    android:backgroundTint="@color/transparent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border"
         android:orientation="vertical"
         android:padding="16dp">
 
