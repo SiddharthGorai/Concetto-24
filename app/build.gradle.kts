@@ -75,6 +75,8 @@ dependencies {
 // Download + Preprocess:
     implementation ("com.cloudinary:cloudinary-android-download:2.5.0")
     implementation ("com.cloudinary:cloudinary-android-preprocess:2.5.0")
+    implementation ("com.tbuonomo:dotsindicator:4.3")
+
 
     //Announcements and Notifications
     implementation(libs.firebase.messaging.ktx)
