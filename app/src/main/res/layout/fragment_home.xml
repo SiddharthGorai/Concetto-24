@@ -311,11 +311,12 @@
                 android:padding="26dp">
 
                 <ImageView
+                    android:padding="10dp"
                     android:id="@+id/lecturesIcon1"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/round_grid"
-                    android:src="@drawable/concetto" />
+                    android:src="@drawable/lecture" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -331,11 +332,12 @@
                 android:padding="26dp">
 
                 <ImageView
+                    android:padding="10dp"
                     android:id="@+id/lecturesIcon2"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/round_grid"
-                    android:src="@drawable/concetto" />
+                    android:src="@drawable/schedule" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -351,11 +353,12 @@
                 android:padding="26dp">
 
                 <ImageView
+                    android:padding="10dp"
                     android:id="@+id/lecturesIcon3"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/round_grid"
-                    android:src="@drawable/concetto" />
+                    android:src="@drawable/competition" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -371,11 +374,12 @@
                 android:padding="26dp">
 
                 <ImageView
+                    android:padding="10dp"
                     android:id="@+id/lecturesIcon4"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/round_grid"
-                    android:src="@drawable/concetto" />
+                    android:src="@drawable/events" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -391,11 +395,12 @@
                 android:padding="26dp">
 
                 <ImageView
+                    android:padding="10dp"
                     android:id="@+id/lecturesIcon5"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/round_grid"
-                    android:src="@drawable/concetto" />
+                    android:src="@drawable/mainstage" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -411,11 +416,12 @@
                 android:padding="26dp">
 
                 <ImageView
+                    android:padding="10dp"
                     android:id="@+id/lecturesIcon6"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/round_grid"
-                    android:src="@drawable/concetto" />
+                    android:src="@drawable/gallery" />
 
                 <TextView
                     android:layout_width="wrap_content"
