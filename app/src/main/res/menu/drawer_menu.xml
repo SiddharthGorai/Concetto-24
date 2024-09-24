@@ -51,25 +51,25 @@
 
 
 
-    <item android:title="Admin Section"
-        android:visible="true">
+<!--    <item android:title="Admin Section"-->
+<!--        android:visible="true">-->
 
-        <menu>
+<!--        <menu>-->
 
-            <group android:checkableBehavior="single">
+<!--            <group android:checkableBehavior="single">-->
 
-                <item android:id="@+id/addAnnouncementFragment"
-                    android:icon="@drawable/ic_write"
-                    android:title="New Announcement" />
+<!--                <item android:id="@+id/addAnnouncementFragment"-->
+<!--                    android:icon="@drawable/ic_write"-->
+<!--                    android:title="New Announcement" />-->
 
-<!--                <item android:id="@+id/qrScanFragment"-->
-<!--                    android:icon="@drawable/ic_qr"-->
-<!--                    android:title="Scan Qr" />-->
-            </group>
+<!--&lt;!&ndash;                <item android:id="@+id/qrScanFragment"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:icon="@drawable/ic_qr"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:title="Scan Qr" />&ndash;&gt;-->
+<!--            </group>-->
 
-        </menu>
+<!--        </menu>-->
 
-    </item>
+<!--    </item>-->
 
 
     <item android:title="Support Section">
