@@ -58,6 +58,8 @@ class HomeFragment : Fragment() {
         val sharedPref= SharedPrefsHelper(requireContext())
         val user=sharedPref.getUser()
         val name=user?.username.toString()
+
+
 //        if(user!=null)
 //        binding.usersName.text=name+" !! "
 //        else{
