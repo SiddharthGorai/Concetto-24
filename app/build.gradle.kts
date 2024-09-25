@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.okhttp.v4100)
     implementation(libs.androidx.junit)
     implementation (libs.gson)
     implementation(libs.androidx.core.ktx)

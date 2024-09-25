@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.iitism.concetto_24.Data.SponsorData
 
+
 import com.iitism.concetto_24.R
 import kotlin.math.max
 import kotlin.math.min

@@ -207,6 +207,7 @@ class MainActivity : AppCompatActivity(){
                 R.id.contactFragment -> "Contact Us"
                 R.id.singleEventFragment -> "Events"
                 R.id.campusAmbassadorFragment -> "Campus Ambassador"
+                R.id.GalleryFragment-> "Gallery"
                 else -> "Srijan 24"
             }
 

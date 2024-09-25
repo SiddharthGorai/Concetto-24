@@ -14,6 +14,10 @@
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_GalleryFragment"
+            app:destination="@id/GalleryFragment"
+            app:popUpToInclusive="true" />
 
 <!--        <action-->
 <!--            android:id="@+id/action_homeFragment_to_qrScanFragment"-->
@@ -70,6 +74,16 @@
         android:name="com.iitism.concetto_24.ui.AddAnnouncementFragment"
         android:label="fragment_add_announcement"
         tools:layout="@layout/fragment_add_announcement" />
+    <fragment
+        android:id="@+id/GalleryFragment"
+        android:name="com.iitism.concetto_24.ui.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/ScheduleFragment"
+        android:name="com.iitism.concetto_24.ui.ScheduleFragment"
+        android:label="fragment_schedule"
+        tools:layout="@layout/fragment_schedule" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.iitism.concetto_24.ui.ProfileFragment"

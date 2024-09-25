@@ -8,17 +8,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.iitism.concetto_24.R
+import com.iitism.concetto_24.services.GoogleFormApi
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MerchandiseFragment : Fragment() {
     private lateinit var openFormButton: Button
     private var imagePager: ViewPager2?=null
+    private lateinit var nameEt: EditText
+    private lateinit var hostelSpinner:Spinner
+    private lateinit var sizeSpinner: Spinner
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("https://docs.google.com/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    private val api = retrofit.create(GoogleFormApi::class.java)
+
     var imageList = listOf(
         R.drawable.tshirt,
         R.drawable.tshirt,
@@ -37,19 +57,126 @@ class MerchandiseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view= inflater.inflate(R.layout.fragment_merchandise, container, false)
-        openFormButton = view.findViewById<Button>(R.id.BtnOrder)
-        openFormButton.setOnClickListener {
-            openGoogleForm()
-        }
+        hostelSpinner=view.findViewById(R.id.hostel_spinner)
+        sizeSpinner=view.findViewById(R.id.size_spinner)
         imagePager = view.findViewById<ViewPager2>(R.id.view_pager_carousel)
 
         val adapter = ImagePagerAdapter(imageList)
         imagePager?.adapter = adapter
         startImageSliderTimer()
+        nameEt=view.findViewById(R.id.etName)
+        val btnPlace=view.findViewById<Button>(R.id.PlaceOrder)
+        btnPlace.setOnClickListener {
+            val name=nameEt.text.toString()
+            val call=api.sendFormData(name)
+            call.enqueue(object:Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    try {
+                        if (response.isSuccessful) {
+                            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(requireContext(), "Unsuccessful", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    try {
+                        Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                    } catch (e: Exception) {
+                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+
+            })
+        }
+        HostelSpinner()
+        SizeSpinner()
         return view
     }
+
+    private fun SizeSpinner() {
+        val sizes = listOf(
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        )
+        val adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.spinner_item,
+            sizes
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Apply the adapter to the spinner
+        sizeSpinner.adapter = adapter
+        sizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                val selectedHotel = parent.getItemAtPosition(position).toString()
+                Toast.makeText(requireContext(), "Selected: $selectedHotel", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another callback if nothing is selected
+            }
+
+        }
+    }
+
+    private fun HostelSpinner() {
+        val hotelNames = listOf(
+            "Amber",
+            "Aquamarine",
+            "Jasper",
+            "Sapphire",
+            "Topaz",
+            "Rosaline",
+            "Ruby",
+            "Diamond",
+            "Emarald",
+            "Opal",
+            "International Hostel",
+            "Others"
+        )
+        val adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.spinner_item,
+            hotelNames
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        hostelSpinner.adapter = adapter
+        hostelSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                val selectedHotel = parent.getItemAtPosition(position).toString()
+                Toast.makeText(requireContext(), "Selected: $selectedHotel", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another callback if nothing is selected
+            }
+
+        }
+    }
+
     private fun openGoogleForm() {
         val formUrl = "https://forms.gle/nwcyLA5kh28teKN39"
         val intent = Intent(Intent.ACTION_VIEW)
