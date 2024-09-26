@@ -22,8 +22,8 @@ import kotlin.math.abs
 
 class LecturesFragment : Fragment() {
 
-    private var binding: FragmentLecturesBinding? = null
-    //private var binding2: FragmentEventsBinding? = null
+    private var _binding: FragmentLecturesBinding? = null
+    private val binding get() = _binding!!
 
 
 
@@ -34,17 +34,13 @@ class LecturesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentLecturesBinding.inflate(layoutInflater)
+        _binding = FragmentLecturesBinding.inflate(layoutInflater)
         return binding!!.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-//        val indicator= binding?.lectureIndicator
-//        indicator!!.setViewPager(binding.viewPagerLectures)
 
         val images = arrayOf(
             "https://res.cloudinary.com/dbzyamccb/image/upload/v1727184530/Tanu-Jain_nrx027.webp",

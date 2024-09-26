@@ -34,6 +34,8 @@ import java.util.TimerTask
 import kotlin.math.abs
 
 
+private lateinit var navController: NavController
+
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -43,6 +45,7 @@ class HomeFragment : Fragment() {
     private var currentPage = 0
     private var timer: Timer? = null
     private val handler = Handler(Looper.getMainLooper())
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,11 +63,30 @@ class HomeFragment : Fragment() {
         val name=user?.username.toString()
 
 
-//        if(user!=null)
-//        binding.usersName.text=name+" !! "
-//        else{
-//            binding.usersName.text="user"+" !! "
-//        }
+
+        val lecture_btn = binding.lecturesIcon
+        val scheduleBtn = binding.scheduleIcon
+        val competitionBtn = binding.compIcon
+        val eventsBtn = binding.eventsIcon
+        val mainStageBtn = binding.mainstageIcon
+        val galleryBtn = binding.galleryIcon
+
+        lecture_btn.setOnClickListener {
+            findNavController().navigate(R.id.lectureFragment)
+        }
+        scheduleBtn.setOnClickListener {
+            findNavController().navigate(R.id.ScheduleFragment)
+        }
+        galleryBtn.setOnClickListener {
+            findNavController().navigate(R.id.GalleryFragment)
+        }
+        mainStageBtn.setOnClickListener {
+            findNavController().navigate(R.id.mainStageFragment)
+        }
+        eventsBtn.setOnClickListener {
+            findNavController().navigate(R.id.eventsFragment)
+        }
+
         val images = arrayOf(
            "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973132/IMG-20240910-WA0054_p41az0.jpg",
             "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973132/IMG-20240910-WA0053_bijxkg.jpg",
@@ -99,7 +121,7 @@ class HomeFragment : Fragment() {
                 currentPage = position
             }
         })
-        binding.Gallery.setOnClickListener {
+        binding.galleryIcon.setOnClickListener {
             val nav=findNavController()
             nav.navigate(action_homeFragment_to_GalleryFragment)
         }

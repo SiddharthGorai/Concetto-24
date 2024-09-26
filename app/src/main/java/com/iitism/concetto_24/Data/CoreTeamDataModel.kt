@@ -1,4 +1,4 @@
-package com.iitism.concetto_24.data
+package com.iitism.concetto_24.Data
 
 data class CoreTeamDataModel (
     var image: String,

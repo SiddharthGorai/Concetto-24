@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.google.gson.Gson
-import com.iitism.concetto_24.data.CoreTeamDataModel
+import com.iitism.concetto_24.Data.CoreTeamDataModel
 import java.io.InputStream
 
 
