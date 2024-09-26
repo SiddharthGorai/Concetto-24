@@ -411,11 +411,12 @@
                 android:padding="26dp">
 
                 <ImageView
-                    android:id="@+id/lecturesIcon6"
+                    android:id="@+id/Gallery"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/round_grid"
-                    android:src="@drawable/concetto" />
+                    android:src="@drawable/concetto"
+                    android:clickable="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -11,10 +11,19 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupWithNavController
 import com.iitism.concetto_24.R
+import com.iitism.concetto_24.R.id.action_homeFragment_to_GalleryFragment
+import com.iitism.concetto_24.R.id.homeFragment
 import com.iitism.concetto_24.adapter.HomeCarouselAdapter
 import com.iitism.concetto_24.databinding.FragmentHomeBinding
 import com.iitism.concetto_24.utils.SharedPrefsHelper
@@ -49,6 +58,8 @@ class HomeFragment : Fragment() {
         val sharedPref= SharedPrefsHelper(requireContext())
         val user=sharedPref.getUser()
         val name=user?.username.toString()
+
+
 //        if(user!=null)
 //        binding.usersName.text=name+" !! "
 //        else{
@@ -88,6 +99,10 @@ class HomeFragment : Fragment() {
                 currentPage = position
             }
         })
+        binding.Gallery.setOnClickListener {
+            val nav=findNavController()
+            nav.navigate(action_homeFragment_to_GalleryFragment)
+        }
     }
 
     override fun onResume() {
