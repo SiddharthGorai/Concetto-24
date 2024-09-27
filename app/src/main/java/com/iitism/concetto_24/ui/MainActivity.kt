@@ -9,7 +9,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.telecom.Call
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -28,7 +27,7 @@ import com.iitism.concetto_24.databinding.ActivityMainBinding
 import com.iitism.concetto_24.utils.SharedPrefsHelper
 
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
     private val topic = "/topics/announcement"
     private lateinit var binding: ActivityMainBinding
     private lateinit var dialog: Dialog
@@ -58,15 +57,12 @@ class MainActivity : AppCompatActivity(){
 //            binding.appBar.btnLogOut.visibility = View.VISIBLE
 //            binding.appBar.btnProfilehome.visibility = View.GONE
 //        }
-        sharedPrefsHelper=SharedPrefsHelper(this)
-        val user=sharedPrefsHelper.getUser()
+        sharedPrefsHelper = SharedPrefsHelper(this)
+        val user = sharedPrefsHelper.getUser()
         binding.appBar.btnProfilehome.setOnClickListener {
-            if(user==null)
-            {
+            if (user == null) {
                 startActivity(Intent(this, LoginSignup::class.java))
-            }
-            else
-            {
+            } else {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.profileFragment)
             }
         }
@@ -208,7 +204,7 @@ class MainActivity : AppCompatActivity(){
                 R.id.singleEventFragment -> "Events"
                 R.id.campusAmbassadorFragment -> "Campus Ambassador"
                 R.id.guestTalkFragment -> "Guest Talks"
-                R.id.GalleryFragment-> "Gallery"
+                R.id.GalleryFragment -> "Gallery"
                 else -> "Concetto 24"
             }
 
@@ -216,7 +212,7 @@ class MainActivity : AppCompatActivity(){
                 binding.appBar.btnProfilehome.visibility = View.GONE
                 binding.appBar.btnLogOut.visibility = View.GONE
             } else {
-                if (user==null) {
+                if (user == null) {
                     binding.appBar.btnLogOut.visibility = View.GONE
                     binding.appBar.btnProfilehome.visibility = View.VISIBLE
                 } else {
@@ -249,10 +245,9 @@ class MainActivity : AppCompatActivity(){
         val token = preferences.getString("token", "") ?: ""
 
 
-
-        if(token.isNotEmpty()) {
-
-        }
+//        if(token.isNotEmpty()) {
+//
+//        }
     }
 
     private fun dismissDialogAfterDelay() {
@@ -289,7 +284,7 @@ class MainActivity : AppCompatActivity(){
         if (isGranted) {
             // FCM SDK (and your app) can post notifications.
             //extract token
-
+            Log.d("T", "granted")
         }
     }
 
@@ -360,7 +355,7 @@ class MainActivity : AppCompatActivity(){
 //        if (paymentId != null) {
 //            Log.d("dataMerch", paymentId)
 //        }
-    }
+}
 
 //    override fun sendOrder(tShirtSize: String, address: String, quantity: String, orderId: String) {
 //        Log.d("OKKKKKKKKKKK", "OKKKKKKKKKKKKKKKK")
