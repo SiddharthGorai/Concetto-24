@@ -45,7 +45,7 @@ class ProfileFragment : Fragment() {
         // Set the data to the TextViews
         tvName.text = name
         tvEmail.text = email
-        tvReferallCode.text=sharedPref.getReferral().toString()
+        if(tvReferallCode.text != null) tvReferallCode.text = sharedPref.getReferral().toString()
     }
     private fun logoutUser() {
         SharedPrefsHelper(requireContext()).clear()

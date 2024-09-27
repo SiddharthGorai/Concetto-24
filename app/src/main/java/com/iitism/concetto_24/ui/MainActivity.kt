@@ -207,8 +207,9 @@ class MainActivity : AppCompatActivity(){
                 R.id.contactFragment -> "Contact Us"
                 R.id.singleEventFragment -> "Events"
                 R.id.campusAmbassadorFragment -> "Campus Ambassador"
+                R.id.guestTalkFragment -> "Guest Talks"
                 R.id.GalleryFragment-> "Gallery"
-                else -> "Srijan 24"
+                else -> "Concetto 24"
             }
 
             if (destination.id != R.id.homeFragment) {
@@ -258,7 +259,7 @@ class MainActivity : AppCompatActivity(){
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             dialog.dismiss()
-        }, 10000)
+        }, 2000)
     }
 
     private fun initializeDialog() {

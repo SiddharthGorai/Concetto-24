@@ -122,14 +122,14 @@
             app:destination="@id/homeFragment" />
      </fragment>
     <fragment
-        android:id="@+id/lectureFragment"
-        android:name="com.iitism.concetto_24.ui.LecturesFragment"
-        android:label="lectureFragment"
-        tools:layout="@layout/fragment_lectures" >
+        android:id="@+id/guestTalkFragment"
+        android:name="com.iitism.concetto_24.ui.GuestTalkFragment"
+        android:label="guestTalkFragment"
+        tools:layout="@layout/fragment_guest_talk" >
     </fragment>
     <fragment
         android:id="@+id/mainStageFragment"
-        android:name="com.iitism.concetto_24.ui.LecturesFragment"
+        android:name="com.iitism.concetto_24.ui.GuestTalkFragment"
         android:label="MainStageFragment"
         tools:layout="@layout/fragment_main_stage" >
     </fragment>

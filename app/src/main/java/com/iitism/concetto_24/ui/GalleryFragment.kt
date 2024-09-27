@@ -1,11 +1,12 @@
 package com.iitism.concetto_24.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.adapter.GalleryAdapter
@@ -48,8 +49,6 @@ class GalleryFragment : Fragment() {
         // Set up RecyclerView with GridLayoutManager and Adapter
         recyclerView.adapter = GalleryAdapter(imageUrls)
         recyclerView.layoutManager = GridLayoutManager(context, 2) // 2 columns
-
-
         return view
     }
 }

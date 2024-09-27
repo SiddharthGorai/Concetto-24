@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
         val galleryBtn = binding.galleryIcon
 
         lecture_btn.setOnClickListener {
-            findNavController().navigate(R.id.lectureFragment)
+            findNavController().navigate(R.id.guestTalkFragment)
         }
         scheduleBtn.setOnClickListener {
             findNavController().navigate(R.id.ScheduleFragment)
