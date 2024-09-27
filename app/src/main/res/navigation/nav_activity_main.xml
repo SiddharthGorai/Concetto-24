@@ -129,7 +129,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainStageFragment"
-        android:name="com.iitism.concetto_24.ui.GuestTalkFragment"
+        android:name="com.iitism.concetto_24.ui.MainStageFragment"
         android:label="MainStageFragment"
         tools:layout="@layout/fragment_main_stage" >
     </fragment>

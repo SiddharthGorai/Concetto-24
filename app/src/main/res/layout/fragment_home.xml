@@ -281,7 +281,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/eventsIcon"
+                        android:id="@+id/caIcon"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
                         android:background="@drawable/round_grid"
@@ -291,7 +291,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="Events" />
+                        android:text="CA Portal" />
                 </LinearLayout>
 
                 <LinearLayout
