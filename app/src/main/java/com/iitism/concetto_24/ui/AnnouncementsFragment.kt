@@ -17,8 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AnnouncementsFragment : Fragment(), AnnouncementsRVAdapter.OnTimestampUpdateListener {
-    private var _binding: FragmentAnnouncementBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentAnnouncementBinding
 
     private lateinit var announcementsAdapter: AnnouncementsRVAdapter
 
@@ -26,7 +25,7 @@ class AnnouncementsFragment : Fragment(), AnnouncementsRVAdapter.OnTimestampUpda
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentAnnouncementBinding.inflate(inflater, container, false)
+        binding = FragmentAnnouncementBinding.inflate(inflater, container, false)
         binding.progressBar.visibility = View.VISIBLE
         return binding.root
     }
@@ -73,13 +72,9 @@ class AnnouncementsFragment : Fragment(), AnnouncementsRVAdapter.OnTimestampUpda
         })
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     override fun onUpdateTimestamp(position: Int, timeAgo: String) {
-        // Update the timestamp in your ViewHolder or any other necessary logic
+        if (!this::binding.isInitialized)
+            return
         binding.rvAnnouncements.findViewHolderForAdapterPosition(position)?.let { viewHolder ->
             (viewHolder as? AnnouncementsRVAdapter.AnnouncementsViewHolder)?.tvTime?.text = timeAgo
         }
