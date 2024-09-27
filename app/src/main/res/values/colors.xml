@@ -11,7 +11,8 @@
     <color name="cardBgColor">#372916</color>
     <color name="btnRegular">#FF7900</color>
     <color name="bgBackDark">#E6052323</color>
-    <color name="bgLight">#86052323</color>
+    <color name="bgLight">#BC5B463C</color>
+    <color name="bgBrownLight">#86052323</color>
     <!--    <color name="brown">#723B14</color>-->
     <color name="alternate">#1F1E1E</color>
     <color name="bgAlternate">#919191</color>
