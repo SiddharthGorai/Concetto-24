@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
         val lecture_btn = binding.lecturesIcon
         val scheduleBtn = binding.scheduleIcon
         val competitionBtn = binding.compIcon
-        val eventsBtn = binding.eventsIcon
+        val caBtn = binding.caIcon
         val mainStageBtn = binding.mainstageIcon
         val galleryBtn = binding.galleryIcon
 
@@ -83,7 +83,10 @@ class HomeFragment : Fragment() {
         mainStageBtn.setOnClickListener {
             findNavController().navigate(R.id.mainStageFragment)
         }
-        eventsBtn.setOnClickListener {
+        caBtn.setOnClickListener {
+            findNavController().navigate(R.id.campusAmbassadorFragment)
+        }
+        competitionBtn.setOnClickListener {
             findNavController().navigate(R.id.eventsFragment)
         }
 
