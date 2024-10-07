@@ -1,9 +1,14 @@
 package com.iitism.concetto_24.ui
 
+import android.app.Activity
+import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +20,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -25,14 +31,28 @@ import retrofit2.Retrofit
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.InputStream
 
 
 class MerchandiseFragment : Fragment() {
     private lateinit var openFormButton: Button
     private var imagePager: ViewPager2?=null
     private lateinit var nameEt: EditText
+    private lateinit var emailEt: EditText
+    private lateinit var admissionEt: EditText
+    private lateinit var hostelEt: Spinner
+    private lateinit var roomEt: EditText
+    private lateinit var contactEt: EditText
+    private lateinit var sizeEt: Spinner
     private lateinit var hostelSpinner:Spinner
     private lateinit var sizeSpinner: Spinner
+    private lateinit var imageView: ImageView
+    private var selectedImageUri: Uri?=null
+    val PICK_IMAGE_REQUEST = 1
+    var selectedImageFile: File? = null
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://docs.google.com/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -58,47 +78,118 @@ class MerchandiseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view= inflater.inflate(R.layout.fragment_merchandise, container, false)
-        hostelSpinner=view.findViewById(R.id.hostel_spinner)
-        sizeSpinner=view.findViewById(R.id.size_spinner)
+//        imageView=view.findViewById(R.id.payment_screenshot)
+//        emailEt=view.findViewById(R.id.etEmail)
+//        admissionEt=view.findViewById(R.id.etAdm)
+//        hostelEt=view.findViewById(hostel_spinner)
+//        roomEt=view.findViewById(R.id.etRoom)
+//        sizeEt=view.findViewById(size_spinner)
+//        contactEt=view.findViewById(R.id.etcontact)
+//        val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+//            uri?.let {
+//                selectedImageUri = it
+//                val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, it)
+//                imageView.setImageBitmap(bitmap)
+//            }
+//        }
+//        imageView.setOnClickListener {
+//            pickImageFromGallery()
+//        }
+//        hostelSpinner=view.findViewById(hostel_spinner)
+//        sizeSpinner=view.findViewById(size_spinner)
         imagePager = view.findViewById<ViewPager2>(R.id.view_pager_carousel)
 
         val adapter = ImagePagerAdapter(imageList)
         imagePager?.adapter = adapter
         startImageSliderTimer()
-        nameEt=view.findViewById(R.id.etName)
+//        nameEt=view.findViewById(R.id.etName)
         val btnPlace=view.findViewById<Button>(R.id.PlaceOrder)
         btnPlace.setOnClickListener {
-            val name=nameEt.text.toString()
-            val call=api.sendFormData(name)
-            call.enqueue(object:Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    try {
-                        if (response.isSuccessful) {
-                            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Toast.makeText(requireContext(), "Unsuccessful", Toast.LENGTH_SHORT).show()
-                        }
-                    } catch (e: Exception) {
-                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    try {
-                        Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-                    } catch (e: Exception) {
-                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-
-            })
+            openGoogleForm()
         }
-        HostelSpinner()
-        SizeSpinner()
+//        btnPlace.setOnClickListener {
+//            val name=nameEt.text.toString()
+//            val adm=admissionEt.text.toString()
+//            val email=emailEt.text.toString()
+//            val hostel=hostelEt.selectedItem.toString()
+//            val room=roomEt.text.toString()
+//            val contact=contactEt.text.toString()
+//            val size=sizeEt.selectedItem.toString()
+//            val call=api.sendFormData(name,email,adm,hostel,room,contact,size,selectedImageFile)
+//            call.enqueue(object:Callback<Void> {
+//                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+//                    try {
+//                        if (response.isSuccessful) {
+//                            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_SHORT).show()
+//                        } else {
+//                            Log.e(selectedImageUri.toString(), "onResponse: ")
+//                            Toast.makeText(requireContext(), "unsuccessful", Toast.LENGTH_SHORT).show()
+//                        }
+//                    } catch (e: Exception) {
+//                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<Void>, t: Throwable) {
+//                    try {
+//                        Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+//                    } catch (e: Exception) {
+//                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//
+//            })
+//        }
+//        HostelSpinner()
+//        SizeSpinner()
         return view
     }
+//    private fun pickImageFromGallery() {
+//        val intent = Intent(Intent.ACTION_PICK)
+//        intent.type = "image/*" // Only allow image selection
+//        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+//    }
 
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            val imageUri: Uri? = data.data
+            imageUri?.let {
+                selectedImageFile = uriToFile(it)
+
+                if (selectedImageFile != null) {
+                    imageView.setImageURI(it)  // Set the image to the ImageView
+
+                    Toast.makeText(requireContext(), "Image saved at: ${selectedImageFile!!.absolutePath}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    // Convert Uri to File
+    fun uriToFile(uri: Uri): File? {
+        val contentResolver: ContentResolver = requireContext().contentResolver
+        val tempFile = File.createTempFile("selected_image", ".jpg", requireContext().cacheDir)
+
+        try {
+            val inputStream: InputStream? = contentResolver.openInputStream(uri)
+            val outputStream = FileOutputStream(tempFile)
+
+            inputStream?.use { input ->
+                outputStream.use { output ->
+                    input.copyTo(output)
+                }
+            }
+            return tempFile
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        return null
+    }
     private fun SizeSpinner() {
         val sizes = listOf(
             "XS",
@@ -125,8 +216,8 @@ class MerchandiseFragment : Fragment() {
                 id: Long
             ) {
                 val selectedHotel = parent.getItemAtPosition(position).toString()
-                Toast.makeText(requireContext(), "Selected: $selectedHotel", Toast.LENGTH_SHORT)
-                    .show()
+                //Toast.makeText(requireContext(), "Selected: $selectedHotel", Toast.LENGTH_SHORT)
+                    //.show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -135,7 +226,6 @@ class MerchandiseFragment : Fragment() {
 
         }
     }
-
     private fun HostelSpinner() {
         val hotelNames = listOf(
             "Amber",
@@ -166,8 +256,8 @@ class MerchandiseFragment : Fragment() {
                 id: Long
             ) {
                 val selectedHotel = parent.getItemAtPosition(position).toString()
-                Toast.makeText(requireContext(), "Selected: $selectedHotel", Toast.LENGTH_SHORT)
-                    .show()
+                //Toast.makeText(requireContext(), "Selected: $selectedHotel", Toast.LENGTH_SHORT)
+                    //.show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {

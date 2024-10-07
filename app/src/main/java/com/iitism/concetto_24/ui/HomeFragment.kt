@@ -23,6 +23,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.R.id.action_homeFragment_to_GalleryFragment
+import com.iitism.concetto_24.R.id.action_homeFragment_to_main_stage
 import com.iitism.concetto_24.R.id.homeFragment
 import com.iitism.concetto_24.adapter.HomeCarouselAdapter
 import com.iitism.concetto_24.databinding.FragmentHomeBinding
@@ -127,6 +128,9 @@ class HomeFragment : Fragment() {
         binding.galleryIcon.setOnClickListener {
             val nav=findNavController()
             nav.navigate(action_homeFragment_to_GalleryFragment)
+        }
+        binding.mainstageIcon.setOnClickListener {
+            findNavController().navigate(action_homeFragment_to_main_stage)
         }
     }
 

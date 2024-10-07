@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.R.id.tvReferalCode
+import com.iitism.concetto_24.auth.LoginSignup
 import com.iitism.concetto_24.utils.SharedPrefsHelper
 
 
@@ -39,6 +41,11 @@ class ProfileFragment : Fragment() {
     private fun loadUserData() {
         val sharedPref= SharedPrefsHelper(requireContext())
         val user=sharedPref.getUser()
+//        if(user==null)
+//        {
+//            Toast.makeText(requireContext(),"Login First",Toast.LENGTH_LONG).show()
+//            startActivity(Intent(requireContext(),LoginSignup::class.java))
+//        }
         val name=user?.username.toString()
         val email=user?.email.toString()
         val contact=user?.contact.toString()

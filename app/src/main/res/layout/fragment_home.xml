@@ -355,21 +355,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/campus_amb3"
+                android:background="@drawable/ca_poster"
                 android:clickable="true"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:text="-->>>>"
-                    android:textColor="@color/white"
-                    android:textSize="30sp">
-
-                </TextView>
-
 
             </LinearLayout>
 

@@ -64,7 +64,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etName"
-                        
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -282,7 +282,7 @@
 
                 <Button
                     android:id="@+id/btnSignUp"
-                    style="@style/btnRegular"
+                    style="@style/btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"

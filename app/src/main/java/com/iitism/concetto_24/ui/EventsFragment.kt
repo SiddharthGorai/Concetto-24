@@ -24,13 +24,9 @@ class EventsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_events, container, false)
 
-        // Initialize views
         viewPager = view.findViewById(R.id.viewPager)
         tabLayout = view.findViewById(R.id.tabLayout)
-
-        // Set up ViewPager
         setupViewPager()
-
         return view
     }
 
@@ -46,7 +42,7 @@ class EventsFragment : Fragment() {
 
             when (position) {
                 0 -> {
-                    tabText.text = "Club\nEvents"
+                    tabText.text = "Club Events"
                 }
                 1 -> {
                     tabText.text = "Departmental Events"
