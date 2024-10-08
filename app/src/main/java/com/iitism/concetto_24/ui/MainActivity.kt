@@ -12,8 +12,10 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
@@ -184,7 +186,16 @@ class MainActivity : AppCompatActivity() {
                 R.id.announcementsFragment -> binding.navView.setCheckedItem(R.id.announcementsFragment)
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
-                R.id.profileFragment -> binding.navView.setCheckedItem(R.id.profileFragment)
+                R.id.profileFragment -> {
+                            if(user==null) {
+                                finish()
+                                startActivity(Intent(this,MainActivity::class.java))
+                                Toast.makeText(this,"Login First",Toast.LENGTH_LONG).show()
+                                startActivity(Intent(this,LoginSignup::class.java))
+                            }else{
+                                binding.navView.setCheckedItem(R.id.profileFragment)
+                            }
+                }
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
                 R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
                 R.id.contactFragment -> binding.navView.setCheckedItem(R.id.contactFragment)
@@ -205,6 +216,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.campusAmbassadorFragment -> "Campus Ambassador"
                 R.id.guestTalkFragment -> "Guest Talks"
                 R.id.GalleryFragment -> "Gallery"
+                R.id.mainStageFragment-> "Main Stage"
+                R.id.ScheduleFragment-> "Schedule"
                 else -> "Concetto 24"
             }
 

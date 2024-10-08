@@ -19,8 +19,6 @@ class MainStageFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main_stage, container, false)
 
-
-        // Lists of image URLs for each year
         val imageUrls2024= listOf("https://res.cloudinary.com/dimf24hn7/image/upload/v1727122789/coming_soon_cljlt7.png")
         val imageUrls2023 = listOf("https://res.cloudinary.com/dimf24hn7/image/upload/v1727112098/Here_are_some_glimpses_of_EDM_night_conducted_under__concetto.iitism_2023._._._Ft.__progressivebrothers____kavyakhurana_._.__edmnight__edm__probros__sunburn__sunburncampus__kavyakhurana__iitism__2_l1ms2v.jpg"
             , "https://res.cloudinary.com/dimf24hn7/image/upload/v1727112100/IIT_Dhanbad_was_phenomenal._%EF%B8%8F_._Wearing__thesouledstore__._Managed_by__the_hustler_kind__._Amazing_work_behind_the_cameras_by__vaibhav_007___and__fotofreaks_iitism____concetto.iitism__tribevi_4_ucyh7j.jpg"
@@ -45,7 +43,6 @@ class MainStageFragment : Fragment() {
             ,"https://res.cloudinary.com/dimf24hn7/image/upload/v1727125581/With_Robowars__Tech-_talks__motivational_speeches__competitions__and_dance_night__day_2_of_Concetto__22_ended_on_a_high_note._Here_is_a_glimpse_of_the_happenings_around_the_campus._._.__concetto_shp304.jpg"
             ,"https://res.cloudinary.com/dimf24hn7/image/upload/v1727125582/A_short_glimpse_of_the_EDM_night_held_at_Amber_ground_which_marked_the_ending_of_Concetto_22_-_The_Annual_Techno_Management_Festival_of_IIT_ISM_Dhanbad._.__swattrexmusic___djmerlin_official___co_2_ztgndq.jpg"
         )
-        // Set up ViewPager for 2024
         val viewPager2024 = view.findViewById<ViewPager2>(R.id.viewPager2024)
         val adapter2024 = ImagePagerAdapter(imageUrls2024, this)
         viewPager2024.adapter = adapter2024

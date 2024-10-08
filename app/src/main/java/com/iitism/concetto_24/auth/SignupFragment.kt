@@ -32,18 +32,20 @@ class SignupFragment : Fragment() {
     private var _binding:FragmentSignupBinding? = null
     private val binding get() = _binding!!
     private lateinit var prefsHelper: SharedPrefsHelper
+    private lateinit var dialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        initializeDialog()
         _binding = FragmentSignupBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initializeDialog()
         binding.tvLogin.setOnClickListener {
             val navOptions = NavOptions.Builder()
                 .setPopUpTo(R.id.onboardingFragment, false)
@@ -65,6 +67,7 @@ class SignupFragment : Fragment() {
     }
 
     private fun register() {
+        dialog.show()
         val fullName = binding.etName.text.toString().trim()
         val email = binding.etEmail.text.toString().trim()
         val college = binding.etCollege.text.toString().trim()
@@ -79,8 +82,10 @@ class SignupFragment : Fragment() {
 
         call.enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                dialog.dismiss()
                 when (response.code()) {
                     200 -> {
+                        dialog.dismiss()
                         Toast.makeText(context, "Account Created Successfully!", Toast.LENGTH_SHORT).show()
 
                         val registerResponse = response.body()
@@ -100,11 +105,13 @@ class SignupFragment : Fragment() {
                             val action = SignupFragmentDirections.actionRegisterFragmentToOtpFragment(user.email)
                             findNavController().navigate(action)
                         } else {
+                            dialog.dismiss()
                             Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     409 -> {
+                        dialog.dismiss()
                         response.errorBody()?.let { errorBody ->
                             val errorBodyString = errorBody.string()
                             Log.d("Register", "Error Body: $errorBodyString")
@@ -124,6 +131,7 @@ class SignupFragment : Fragment() {
                     }
 
                     else -> {
+                        dialog.dismiss()
                         Toast.makeText(context, "Unexpected Error Occurred", Toast.LENGTH_SHORT)
                             .show()
                         Log.d("Register", "Unexpected Error Occurred ${response.code()}")
@@ -132,6 +140,7 @@ class SignupFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                dialog.dismiss()
                 Toast.makeText(context, "Network Error Occurred", Toast.LENGTH_SHORT).show()
                 Log.d("Register", "Network Error: ${t.message}")
             }
@@ -260,6 +269,26 @@ class SignupFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    private fun initializeDialog() {
+        dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.progress_bar)
+        dialog.setCancelable(false)
+        val layoutParams = WindowManager.LayoutParams().apply {
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            height = WindowManager.LayoutParams.MATCH_PARENT
+        }
+        dialog.window?.attributes = layoutParams
+        if (dialog.window != null) {
+            dialog.window!!.setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.progress_bar
+                    )
+                )
+            )
+        }
     }
 
 }

@@ -27,5 +27,4 @@
         app:itemBackground="@drawable/nav_item_background"
         app:itemTextAppearance="@style/h4"
         app:menu="@menu/drawer_menu" />
-
 </androidx.drawerlayout.widget.DrawerLayout>

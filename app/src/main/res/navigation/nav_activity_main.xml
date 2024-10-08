@@ -22,6 +22,10 @@
             android:id="@+id/action_homeFragment_to_lectureFragment"
             app:destination="@id/GalleryFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_main_stage"
+            app:destination="@id/mainStageFragment"
+            app:popUpToInclusive="true" />
         <!--        <action-->
 <!--            android:id="@+id/action_homeFragment_to_qrScanFragment"-->
 <!--            app:destination="@id/qrScanFragment" />-->

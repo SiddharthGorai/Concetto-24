@@ -3,25 +3,22 @@ package com.iitism.concetto_24.ViewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
 import com.google.gson.Gson
 import com.iitism.concetto_24.Data.CoreTeamDataModel
+import kotlinx.coroutines.launch
 import java.io.InputStream
 
 
-class CoreTeamViewModel(private  val context : Context): ViewModel() {
+class CoreTeamViewModel(private val context: Context) : ViewModel() {
 
-    private  val _coreTeamList = mutableListOf<CoreTeamDataModel>()
-
-    val coreTeamList : List<CoreTeamDataModel>
+    private val _coreTeamList = mutableListOf<CoreTeamDataModel>()
+    val coreTeamList: List<CoreTeamDataModel>
         get() = _coreTeamList
 
-    var error: String? = null
+    private var error: String? = null
 
-    fun getCoreTeamList()
-    {
+    fun getCoreTeamList() {
         viewModelScope.launch {
-
             try {
                 _coreTeamList.clear()
                 val inputStream: InputStream = context.assets.open("coreTeam.json")
@@ -35,13 +32,9 @@ class CoreTeamViewModel(private  val context : Context): ViewModel() {
 
                 val coreTeam = gson.fromJson(json, Array<CoreTeamDataModel>::class.java)
                 _coreTeamList.addAll(coreTeam)
-            }
-            catch (e: Exception)
-            {
+            } catch (e: Exception) {
                 error = e.toString()
             }
-
         }
     }
-
 }
