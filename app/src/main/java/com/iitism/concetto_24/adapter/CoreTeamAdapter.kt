@@ -20,7 +20,8 @@ class CoreTeamAdapter(private val dataList: List<CoreTeamDataModel>) :
     RecyclerView.Adapter<CoreTeamAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.coreteam_card_view, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.coreteam_card_view, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -30,16 +31,16 @@ class CoreTeamAdapter(private val dataList: List<CoreTeamDataModel>) :
 
         if (!currentData.image.isNullOrEmpty()) {
             Glide.with(holder.itemView)
-                .load(currentData.image?: R.drawable.concetto_wbg)
+                .load(currentData.image)
                 .apply(
                     RequestOptions()
-                        .placeholder(R.drawable.progress_animation)
+                        .placeholder(R.drawable.ic_person)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                 )
                 .fitCenter()
                 .into(holder.profileImage)
         } else {
-            holder.profileImage.setImageResource(R.drawable.concetto_wbg)
+            holder.profileImage.setImageResource(R.drawable.ic_person)
         }
 
         holder.name.text = currentData.name
@@ -47,7 +48,7 @@ class CoreTeamAdapter(private val dataList: List<CoreTeamDataModel>) :
         holder.position.text = currentData.position
 
         holder.linkedInUrl.setOnClickListener {
-            val url = currentData.linkedinUrl
+            val url = currentData.linkedIn_url
             if (!url.isNullOrEmpty()) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 ContextCompat.startActivity(it.context, intent, null)
@@ -57,7 +58,7 @@ class CoreTeamAdapter(private val dataList: List<CoreTeamDataModel>) :
         }
 
         holder.instagramUrl.setOnClickListener {
-            val url = currentData.instagramUrl
+            val url = currentData.instagram_url
             if (!url.isNullOrEmpty()) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 ContextCompat.startActivity(it.context, intent, null)
@@ -66,6 +67,7 @@ class CoreTeamAdapter(private val dataList: List<CoreTeamDataModel>) :
             }
         }
     }
+
     override fun getItemCount(): Int {
         return dataList.size
     }
