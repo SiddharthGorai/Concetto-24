@@ -75,4 +75,12 @@
             <item name="tabIndicatorColor">@android:color/transparent</item> <!-- Set indicator color to transparent -->
             <item name="tabBackground">@android:color/transparent</item> <!-- Ensure no background for tabs -->
         </style>
+
+    <style name="button1">
+        <item name="cornerSize">20%</item>
+    </style>
+
+    <style name="button2">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

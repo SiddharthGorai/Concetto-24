@@ -17,6 +17,11 @@ class GuestTalkFragment : Fragment() {
     private var _binding: FragmentGuestTalkBinding? = null
     private val binding get() = _binding!!
 
+//
+//
+//    private var currentPage = 0
+//    private var currentPage2 = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -29,20 +34,18 @@ class GuestTalkFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val guestData = listOf(
+        val guestDummyData = listOf(
             GuestTalkData(
             "https://res.cloudinary.com/dbzyamccb/image/upload/v1727184530/Tanu-Jain_nrx027.webp",
-            "Dr.Tanu Jain","Dr. Tanu Jain’s inspiring journey spans from being a medical doctor to an IAS officer, where she dedicated seven years to healthcare reforms, education, and rural development. After successfully clearing the UPSC Civil Services Examination, she chose to resign to engage directly with societal issues. Channeling her passion into social initiatives, Dr. Jain worked with NGOs focused on healthcare and women’s empowerment. She also embraced motivational speaking, inspiring students and aspiring civil servants with her authentic insights. As an author, she shares wisdom on personal development and resilience, motivating others to pursue their dreams and make a positive impact. Dr. Tanu Jain exemplifies courage and selflessness, leaving a lasting legacy of service and inspiration"),
+            "Name","This is a brief description of the guest and about what is the going to speak on."),
             GuestTalkData(
                 "https://res.cloudinary.com/dbzyamccb/image/upload/v1727184502/Anubhav-Dubey-Chai-Sutta-Bar_tmdq3q.jpg",
-                "Anubhav Dubey","Anubhav Dubey is a young entrepreneur and co-founder of Chai Sutta Bar, a pioneering tea franchise that has transformed India's tea industry. Launched in 2016, the brand combines tradition with modern business strategies by serving tea in eco-friendly kulhads (clay cups), promoting sustainability and authenticity. Starting with minimal capital, Dubey's focus on creating affordable, welcoming spaces quickly gained popularity among students and professionals. Under his leadership, Chai Sutta Bar has grown into a global brand, symbolizing youth-driven entrepreneurship while supporting social causes like potter employment and environmental responsibility."),
+                "Name","This is a brief description of the guest and about what is the going to speak on."),
             GuestTalkData(
                 "https://res.cloudinary.com/dbzyamccb/image/upload/v1727184530/maxresdefault_e3u9to.jpg",
-                "Dr. Vijendra Singh Chauhan","Dr. Vijendra Singh Chauhan, an Associate Professor of Hindi at Zakir Husain Delhi College, is a visionary leader in education and research. Renowned for his innovative contributions, he adeptly integrates modern methodologies and technology into his teaching. His work promotes interdisciplinary approaches, driving impactful solutions that bridge academic theory and practical application. Dr. Chauhan’s insightful examination of the UPSC Interview highlights his commitment to advancing knowledge and fostering growth in his field."),
-            GuestTalkData("https://res.cloudinary.com/dbzyamccb/image/upload/v1727186021/035cf7358a3958cf336e1706ffd3e70f_ciut1f.jpg",
-                "Deepanshu Raj","Meet Iqlipse Nova: The Multifaceted Creator  Deepanshu Raj, known as Iqlipse Nova, was born on September 16, 1998, in Rajgir, Bihar. A graduate of IIT Delhi, he holds a dual degree in Chemical Engineering (B.Tech + M.Tech), but his heart beats for creativity. From a young age, he dreamt of filmmaking and music, ultimately convincing his parents to let him chase his passion after graduation. Now a vibrant YouTuber and social media influencer, Iqlipse captivates audiences with his music videos and lifestyle vlogs, proving that true success lies in following one’s dreams."))
+                "Name","This is a brief description of the guest and about what is the going to speak on."))
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvGuestTalk)
-        recyclerView.adapter = GuestTalkAdapter(guestData,requireContext())
+        recyclerView.adapter = GuestTalkAdapter(guestDummyData,requireContext())
         recyclerView.layoutManager = LinearLayoutManager(context)
 
 
