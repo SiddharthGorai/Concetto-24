@@ -1,6 +1,5 @@
 package com.iitism.concetto_24.adapter
 
-// EventAdapter.kt
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -32,7 +31,7 @@ class EventAdapter(private val events: Array<EventsData>, private val context: C
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val event = events.get(position)
+        val event = events[position]
         holder.eventName.text = event.eventName
         holder.club.text = event.organiser
         holder.prizePool.text = "Prize Pool: ${event.prizePool}"
@@ -45,11 +44,11 @@ class EventAdapter(private val events: Array<EventsData>, private val context: C
         if (!event.posterUrl.isNullOrEmpty()) {
             Glide.with(context)
                 .load(event.posterUrl)
-                .placeholder(R.drawable.concetto) // Optional placeholder
-                .error(R.drawable.concetto) // Optional error image
+                .placeholder(R.drawable.concetto)
+                .error(R.drawable.concetto)
                 .into(holder.poster)
         } else {
-            holder.poster.setImageResource(R.drawable.concetto) // Set a default image or empty image
+            holder.poster.setImageResource(R.drawable.concetto)
         }
     }
 

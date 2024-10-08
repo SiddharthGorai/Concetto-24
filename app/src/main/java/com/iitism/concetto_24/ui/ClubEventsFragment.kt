@@ -4,12 +4,12 @@ import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.iitism.concetto_24.R
@@ -28,7 +28,7 @@ class ClubEventsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentClubEventsBinding.inflate(inflater, container, false)
         dialog = Dialog(requireActivity())
@@ -60,21 +60,19 @@ class ClubEventsFragment : Fragment() {
         return binding.root
     }
 
-    fun getClubEventData(): Array<EventsData> {
+    private fun getClubEventData(): Array<EventsData> {
 
-            val assetManager = requireContext().assets
-            val inputStream: InputStream = assetManager.open("club_events.json")
-            val size = inputStream.available()
-            val buffer = ByteArray(size)
-            inputStream.read(buffer)
-            inputStream.close()
+        val assetManager = requireContext().assets
+        val inputStream: InputStream = assetManager.open("club_events.json")
+        val size = inputStream.available()
+        val buffer = ByteArray(size)
+        inputStream.read(buffer)
+        inputStream.close()
 
-            val json = String(buffer, Charsets.UTF_8)
-            val gson = Gson()
-            val clubEvents = gson.fromJson(json, Array<EventsData>::class.java)
-        Log.d("events",clubEvents.toString())
-            return clubEvents
-
-
+        val json = String(buffer, Charsets.UTF_8)
+        val gson = Gson()
+        val clubEvents = gson.fromJson(json, Array<EventsData>::class.java)
+        Log.d("events", clubEvents.toString())
+        return clubEvents
     }
 }
