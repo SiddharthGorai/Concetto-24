@@ -14,7 +14,7 @@
     "posterUrl": null
   },
   {
-    "eventName": "CODERapido",
+    "eventName": "CodeRapido",
     "organiser": "Data and Programing Club",
     "prizePool": "20k",
     "unstopLink": null,
@@ -24,7 +24,7 @@
     "eventName": "CryptoGuard CTF",
     "organiser": "Data and Programing Club",
     "prizePool": "25k",
-    "unstopLink": null,
+    "unstopLink": "https://unstop.com/p/cryptoguard-ctf-concetto24-indian-institute-of-technology-indian-school-of-mines-1173080",
     "posterUrl": null
   },
   {
@@ -38,42 +38,42 @@
     "eventName": "Masterstack 3.0",
     "organiser": "Data and Programing Club",
     "prizePool": "21k",
-    "unstopLink": null,
+    "unstopLink": "https://unstop.com/hackathons/masterstack-30-concetto24-indian-institute-of-technology-indian-school-of-mines-1173044",
     "posterUrl": null
   },
   {
     "eventName": "Hack The block",
     "organiser": "Fintech Club",
     "prizePool": "sponsored",
-    "unstopLink": null,
-    "posterUrl": null
+    "unstopLink": "https://unstop.com/hackathons/hack-the-block-concetto24-indian-institute-of-technology-indian-school-of-mines-dhanbad-1170942",
+    "posterUrl": "https://res.cloudinary.com/deukzdr70/image/upload/v1728397129/hack_the__block_cl0emg.png"
   },
   {
-    "eventName": "Mental Math Competition Rulebook",
+    "eventName": "AptiQuest",
     "organiser": "Fintech Club",
     "prizePool": "11k",
-    "unstopLink": null,
-    "posterUrl": null
+    "unstopLink": "https://unstop.com/competitions/aptiquest-concetto24-indian-institute-of-technology-indian-school-of-mines-dhanbad-1170752",
+    "posterUrl": "https://res.cloudinary.com/deukzdr70/image/upload/v1728397236/apti_quest_cxcogh.png"
   },
   {
     "eventName": "Algoverse Rulebook",
     "organiser": "Fintech Club",
     "prizePool": "80k",
     "unstopLink": "https://unstop.com/o/nS7VBTy?lb=j8nOWRG",
-    "posterUrl": null
+    "posterUrl": "https://res.cloudinary.com/deukzdr70/image/upload/v1728397323/algoverse_dh79bt.png"
   },
   {
     "eventName": "Trade-A-Thon",
     "organiser": "Fintech Club",
     "prizePool": "sponsored",
-    "unstopLink": null,
-    "posterUrl": null
+    "unstopLink": "https://unstop.com/competitions/trade-a-thon-concetto24-indian-institute-of-technology-indian-school-of-mines-1171499",
+    "posterUrl": "https://res.cloudinary.com/deukzdr70/image/upload/v1728397398/tradathon_fhfpoq.png"
   },
   {
     "eventName": "Let them cook",
     "organiser": "E-cell",
     "prizePool": "15k",
-    "unstopLink": null,
+    "unstopLink": "https://unstop.com/competitions/let-them-cook-concetto24-indian-institute-of-technology-indian-school-of-mines-dhanbad-1170169",
     "posterUrl": null
   },
   {
@@ -116,14 +116,14 @@
     "organiser": "RoboISM",
     "prizePool": "100k",
     "unstopLink": "https://unstop.com/o/y4SRkIN?lb=DutzQl8",
-    "posterUrl": null
+    "posterUrl": "https://res.cloudinary.com/deukzdr70/image/upload/v1728397468/robowars_htwg91.png"
   },
   {
     "eventName": "ProdBlitz 2.0",
     "organiser": "Product Management Club",
     "prizePool": "30K",
     "unstopLink": "https://unstop.com/o/tZic1Og?lb=rIbvcomN",
-    "posterUrl": null
+    "posterUrl": "https://res.cloudinary.com/deukzdr70/image/upload/v1728397513/prodblitz_hikxlj.jpg"
   },
   {
     "eventName": "Ani-Saga",
@@ -136,7 +136,7 @@
     "eventName": "Electro Design Battle 2.0",
     "organiser": "Electronics and IOT Club",
     "prizePool": "10k",
-    "unstopLink": null,
+    "unstopLink": "https://unstop.com/o/k0DuQme?lb=3vO60AT",
     "posterUrl": null
   }
 ]
