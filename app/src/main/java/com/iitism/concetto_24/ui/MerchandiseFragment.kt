@@ -1,5 +1,6 @@
 package com.iitism.concetto_24.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentResolver
 import android.content.Intent
@@ -31,27 +32,14 @@ import java.io.InputStream
 
 
 class MerchandiseFragment : Fragment() {
-    private lateinit var openFormButton: Button
     private var imagePager: ViewPager2?=null
-    private lateinit var nameEt: EditText
-    private lateinit var emailEt: EditText
-    private lateinit var admissionEt: EditText
-    private lateinit var hostelEt: Spinner
-    private lateinit var roomEt: EditText
-    private lateinit var contactEt: EditText
-    private lateinit var sizeEt: Spinner
     private lateinit var hostelSpinner:Spinner
     private lateinit var sizeSpinner: Spinner
     private lateinit var imageView: ImageView
-    private var selectedImageUri: Uri?=null
-    val PICK_IMAGE_REQUEST = 1
-    var selectedImageFile: File? = null
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://docs.google.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    private val api = retrofit.create(GoogleFormApi::class.java)
-
     var imageList = listOf(
         R.drawable.tshirt,
         R.drawable.tshirt_front,
@@ -64,198 +52,21 @@ class MerchandiseFragment : Fragment() {
 
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view= inflater.inflate(R.layout.fragment_merchandise, container, false)
-//        imageView=view.findViewById(R.id.payment_screenshot)
-//        emailEt=view.findViewById(R.id.etEmail)
-//        admissionEt=view.findViewById(R.id.etAdm)
-//        hostelEt=view.findViewById(hostel_spinner)
-//        roomEt=view.findViewById(R.id.etRoom)
-//        sizeEt=view.findViewById(size_spinner)
-//        contactEt=view.findViewById(R.id.etcontact)
-//        val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-//            uri?.let {
-//                selectedImageUri = it
-//                val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, it)
-//                imageView.setImageBitmap(bitmap)
-//            }
-//        }
-//        imageView.setOnClickListener {
-//            pickImageFromGallery()
-//        }
-//        hostelSpinner=view.findViewById(hostel_spinner)
-//        sizeSpinner=view.findViewById(size_spinner)
-        imagePager = view.findViewById<ViewPager2>(R.id.view_pager_carousel)
-
+        imagePager = view.findViewById<ViewPager2>(R.id.view_pager_carousel_merch)
         val adapter = ImagePagerAdapter(imageList)
         imagePager?.adapter = adapter
         startImageSliderTimer()
-//        nameEt=view.findViewById(R.id.etName)
         val btnPlace=view.findViewById<Button>(R.id.PlaceOrder)
         btnPlace.setOnClickListener {
             openGoogleForm()
         }
-//        btnPlace.setOnClickListener {
-//            val name=nameEt.text.toString()
-//            val adm=admissionEt.text.toString()
-//            val email=emailEt.text.toString()
-//            val hostel=hostelEt.selectedItem.toString()
-//            val room=roomEt.text.toString()
-//            val contact=contactEt.text.toString()
-//            val size=sizeEt.selectedItem.toString()
-//            val call=api.sendFormData(name,email,adm,hostel,room,contact,size,selectedImageFile)
-//            call.enqueue(object:Callback<Void> {
-//                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-//                    try {
-//                        if (response.isSuccessful) {
-//                            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_SHORT).show()
-//                        } else {
-//                            Log.e(selectedImageUri.toString(), "onResponse: ")
-//                            Toast.makeText(requireContext(), "unsuccessful", Toast.LENGTH_SHORT).show()
-//                        }
-//                    } catch (e: Exception) {
-//                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<Void>, t: Throwable) {
-//                    try {
-//                        Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-//                    } catch (e: Exception) {
-//                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//
-//
-//            })
-//        }
-//        HostelSpinner()
-//        SizeSpinner()
         return view
-    }
-//    private fun pickImageFromGallery() {
-//        val intent = Intent(Intent.ACTION_PICK)
-//        intent.type = "image/*" // Only allow image selection
-//        startActivityForResult(intent, PICK_IMAGE_REQUEST)
-//    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            val imageUri: Uri? = data.data
-            imageUri?.let {
-                selectedImageFile = uriToFile(it)
-
-                if (selectedImageFile != null) {
-                    imageView.setImageURI(it)  // Set the image to the ImageView
-
-                    Toast.makeText(requireContext(), "Image saved at: ${selectedImageFile!!.absolutePath}", Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-    }
-
-    // Convert Uri to File
-    fun uriToFile(uri: Uri): File? {
-        val contentResolver: ContentResolver = requireContext().contentResolver
-        val tempFile = File.createTempFile("selected_image", ".jpg", requireContext().cacheDir)
-
-        try {
-            val inputStream: InputStream? = contentResolver.openInputStream(uri)
-            val outputStream = FileOutputStream(tempFile)
-
-            inputStream?.use { input ->
-                outputStream.use { output ->
-                    input.copyTo(output)
-                }
-            }
-            return tempFile
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
-        return null
-    }
-    private fun SizeSpinner() {
-        val sizes = listOf(
-            "XS",
-            "S",
-            "M",
-            "L",
-            "XL",
-            "XXL"
-        )
-        val adapter = ArrayAdapter(
-            requireContext(),
-            R.layout.spinner_item,
-            sizes
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        // Apply the adapter to the spinner
-        sizeSpinner.adapter = adapter
-        sizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                val selectedHotel = parent.getItemAtPosition(position).toString()
-                //Toast.makeText(requireContext(), "Selected: $selectedHotel", Toast.LENGTH_SHORT)
-                //.show()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Another callback if nothing is selected
-            }
-
-        }
-    }
-    private fun HostelSpinner() {
-        val hotelNames = listOf(
-            "Amber",
-            "Aquamarine",
-            "Jasper",
-            "Sapphire",
-            "Topaz",
-            "Rosaline",
-            "Ruby",
-            "Diamond",
-            "Emarald",
-            "Opal",
-            "International Hostel",
-            "Others"
-        )
-        val adapter = ArrayAdapter(
-            requireContext(),
-            R.layout.spinner_item,
-            hotelNames
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        hostelSpinner.adapter = adapter
-        hostelSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                val selectedHotel = parent.getItemAtPosition(position).toString()
-                //Toast.makeText(requireContext(), "Selected: $selectedHotel", Toast.LENGTH_SHORT)
-                //.show()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Another callback if nothing is selected
-            }
-
-        }
     }
 
     private fun openGoogleForm() {
@@ -302,7 +113,7 @@ class MerchandiseFragment : Fragment() {
         }
 
         inner class ImagePagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val imageView: ImageView = itemView.findViewById(R.id.imageView)
+            val imageView: ImageView = itemView.findViewById(R.id.pageImage)
 
             fun bind(imageRes: Int) {
                 Glide.with(itemView.context)
@@ -311,7 +122,6 @@ class MerchandiseFragment : Fragment() {
             }
         }
     }
-
 
 }
 
