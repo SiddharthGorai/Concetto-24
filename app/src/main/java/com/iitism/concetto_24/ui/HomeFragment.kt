@@ -253,7 +253,7 @@ class HomeFragment : Fragment() {
 
     private fun startAutoScroll() {
         timer = Timer()
-        timer?.scheduleAtFixedRate(object : TimerTask() {
+        timer?.schedule(object : TimerTask() {
             override fun run() {
                 handler.post {
                     if (currentPage == totalPages - 1) {
