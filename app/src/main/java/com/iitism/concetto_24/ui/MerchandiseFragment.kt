@@ -15,12 +15,16 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.iitism.concetto_24.R
+import com.iitism.concetto_24.databinding.FragmentHomeBinding
+import com.iitism.concetto_24.databinding.FragmentMerchandiseBinding
 import com.iitism.concetto_24.services.GoogleFormApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -52,6 +56,9 @@ class MerchandiseFragment : Fragment() {
         .build()
     private val api = retrofit.create(GoogleFormApi::class.java)
 
+    private var _binding: FragmentMerchandiseBinding? = null
+    private val binding get() = _binding!!
+
     var imageList = listOf(
         R.drawable.tshirt,
         R.drawable.tshirt_front,
@@ -68,7 +75,8 @@ class MerchandiseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view= inflater.inflate(R.layout.fragment_merchandise, container, false)
+        _binding = FragmentMerchandiseBinding.inflate(layoutInflater)
+        return binding.root
 //        imageView=view.findViewById(R.id.payment_screenshot)
 //        emailEt=view.findViewById(R.id.etEmail)
 //        admissionEt=view.findViewById(R.id.etAdm)
@@ -88,16 +96,7 @@ class MerchandiseFragment : Fragment() {
 //        }
 //        hostelSpinner=view.findViewById(hostel_spinner)
 //        sizeSpinner=view.findViewById(size_spinner)
-        imagePager = view.findViewById<ViewPager2>(R.id.view_pager_carousel)
 
-        val adapter = ImagePagerAdapter(imageList)
-        imagePager?.adapter = adapter
-        startImageSliderTimer()
-//        nameEt=view.findViewById(R.id.etName)
-        val btnPlace=view.findViewById<Button>(R.id.PlaceOrder)
-        btnPlace.setOnClickListener {
-            openGoogleForm()
-        }
 //        btnPlace.setOnClickListener {
 //            val name=nameEt.text.toString()
 //            val adm=admissionEt.text.toString()
@@ -134,14 +133,31 @@ class MerchandiseFragment : Fragment() {
 //        }
 //        HostelSpinner()
 //        SizeSpinner()
-        return view
+
     }
 //    private fun pickImageFromGallery() {
 //        val intent = Intent(Intent.ACTION_PICK)
 //        intent.type = "image/*" // Only allow image selection
 //        startActivityForResult(intent, PICK_IMAGE_REQUEST)
 //    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    imagePager = view.findViewById<ViewPager2>(R.id.view_pager_carousel)
 
+    val adapter = ImagePagerAdapter(imageList)
+    imagePager?.adapter = adapter
+    startImageSliderTimer()
+//        nameEt=view.findViewById(R.id.etName)
+    val btnPlace=view.findViewById<Button>(R.id.PlaceOrder)
+
+
+//        startAutoScroll()
+
+
+    btnPlace.setOnClickListener {
+        openGoogleForm()
+    }
+    }
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -283,6 +299,7 @@ class MerchandiseFragment : Fragment() {
         }
         handler.postDelayed(updateImageSliderTask, 4000)
     }
+
     class ImagePagerAdapter(private val imageList: List<Int>) :
         RecyclerView.Adapter<ImagePagerAdapter.ImagePagerViewHolder>() {
 
@@ -302,7 +319,7 @@ class MerchandiseFragment : Fragment() {
         }
 
         inner class ImagePagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val imageView: ImageView = itemView.findViewById(R.id.imageView)
+            val imageView: ImageView = itemView.findViewById(R.id.pageImage)
 
             fun bind(imageRes: Int) {
                 Glide.with(itemView.context)
