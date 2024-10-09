@@ -38,12 +38,12 @@ class GuestTalkAdapter(
         val viewMoreButton = holder.itemView.findViewById<Button>(R.id.btn_viewmore)
 
         // Load the image using Glide
-        Glide.with(holder.itemView.context).load(item.imageUrl)
+        Glide.with(holder.itemView.context).load(item.guestImage)
             .centerCrop()
             .into(imageView)
 
         // Set the title
-        titleTextView.text = item.title
+        titleTextView.text = item.guestName
 
         // Set the click listener for the "View More" button
         viewMoreButton.setOnClickListener {
@@ -62,8 +62,8 @@ class GuestTalkAdapter(
         val closeButton = dialog.findViewById<Button>(R.id.btn_close)
 
         // Set title and description in the dialog
-        titleTextView.text = item.title
-        descriptionTextView.text = item.description
+        titleTextView.text = item.guestName
+        descriptionTextView.text = item.briefDescription
 
         // Set the close button's click listener
         closeButton.setOnClickListener {

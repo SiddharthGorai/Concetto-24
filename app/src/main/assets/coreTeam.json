@@ -158,5 +158,29 @@
     "team": "Web Development",
     "position": "Co-Head",
     "image": "https://res.cloudinary.com/dvcji14nu/image/upload/v1727035897/wv4fjig39nsmqgcuh9iz.png"
+  },
+  {
+    "name": "Siddharth Gorai",
+    "instagram_url": "https://www.instagram.com/siddharthgorai",
+    "linkedIn_url": "https://www.linkedin.com/in/siddharth-gorai-ab01a7254",
+    "team": "App Developement",
+    "position": "Organiser",
+    "image": "https://res.cloudinary.com/dc3prss4c/image/upload/v1728456973/pol1a9hubj1ealdsjgb0.png"
+  },
+  {
+    "name": "Subham Sourav",
+    "instagram_url": null,
+    "linkedIn_url": null,
+    "team": "App Developement",
+    "position": "Organiser",
+    "image": "https://res.cloudinary.com/dvcji14nu/image/upload/v1727035897/wv4fjig39nsmqgcuh9iz.png"
+  },
+  {
+    "name": "Gande Bhargav",
+    "instagram_url": null,
+    "linkedIn_url": null,
+    "team": "App Developement",
+    "position": "Organiser",
+    "image": "https://res.cloudinary.com/dvcji14nu/image/upload/v1727035897/wv4fjig39nsmqgcuh9iz.png"
   }
 ]

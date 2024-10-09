@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.iitism.concetto_24.Data.CoreTeamDataModel
 import com.iitism.concetto_24.Data.GuestTalkData
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.adapter.GuestTalkAdapter
 import com.iitism.concetto_24.databinding.FragmentGuestTalkBinding
+import java.io.InputStream
 
 class GuestTalkFragment : Fragment() {
 
@@ -34,18 +37,21 @@ class GuestTalkFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val guestDummyData = listOf(
-            GuestTalkData(
-            "https://res.cloudinary.com/dbzyamccb/image/upload/v1727184530/Tanu-Jain_nrx027.webp",
-            "Name","This is a brief description of the guest and about what is the going to speak on."),
-            GuestTalkData(
-                "https://res.cloudinary.com/dbzyamccb/image/upload/v1727184502/Anubhav-Dubey-Chai-Sutta-Bar_tmdq3q.jpg",
-                "Name","This is a brief description of the guest and about what is the going to speak on."),
-            GuestTalkData(
-                "https://res.cloudinary.com/dbzyamccb/image/upload/v1727184530/maxresdefault_e3u9to.jpg",
-                "Name","This is a brief description of the guest and about what is the going to speak on."))
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rvGuestTalk)
-        recyclerView.adapter = GuestTalkAdapter(guestDummyData,requireContext())
+        val guestTalkList = mutableListOf<GuestTalkData>();
+        val inputStream: InputStream = requireContext().assets.open("guest_lectures.json")
+        val size = inputStream.available()
+        val buffer = ByteArray(size)
+        inputStream.read(buffer)
+        inputStream.close()
+
+        val json = String(buffer, Charsets.UTF_8)
+        val gson = Gson()
+
+        val guestTalks = gson.fromJson(json, Array<GuestTalkData>::class.java)
+        guestTalkList.addAll(guestTalks)
+
+       val recyclerView = view.findViewById<RecyclerView>(R.id.rvGuestTalk)
+        recyclerView.adapter = GuestTalkAdapter(guestTalkList,requireContext())
         recyclerView.layoutManager = LinearLayoutManager(context)
 
 

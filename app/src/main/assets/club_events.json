@@ -1,5 +1,26 @@
 [
   {
+    "eventName": "RoboWars",
+    "organiser": "RoboISM",
+    "prizePool": "100k",
+    "unstopLink": "https://unstop.com/o/y4SRkIN?lb=DutzQl8",
+    "posterUrl": "https://res.cloudinary.com/deukzdr70/image/upload/v1728397468/robowars_htwg91.png"
+  },
+  {
+    "eventName": "M.A.R.G.(Manual Armed Rover Game)",
+    "organiser": "RoboISM",
+    "prizePool": "30k",
+    "unstopLink": "https://unstop.com/o/cKBdrPH?lb=DutzQl8",
+    "posterUrl": null
+  },
+  {
+    "eventName": "Chakravyu: Maze Solver",
+    "organiser": "RoboISM",
+    "prizePool": "20k",
+    "unstopLink": "https://unstop.com/o/ED6wIvl?lb=DutzQl8",
+    "posterUrl": null
+  },
+  {
     "eventName": "AscensionArcade",
     "organiser": "Data and Programing Club",
     "prizePool": "22k",
@@ -96,27 +117,6 @@
     "prizePool": "7.5k",
     "unstopLink": "https://unstop.com/o/sAfVSb4?lb=esU488Yp&utm_medium=Share&utm_source=shortUrl",
     "posterUrl": null
-  },
-  {
-    "eventName": "M.A.R.G.(Manual Armed Rover Game)",
-    "organiser": "RoboISM",
-    "prizePool": "30k",
-    "unstopLink": "https://unstop.com/o/cKBdrPH?lb=DutzQl8",
-    "posterUrl": null
-  },
-  {
-    "eventName": "Chakravyu: Maze Solver",
-    "organiser": "RoboISM",
-    "prizePool": "20k",
-    "unstopLink": "https://unstop.com/o/ED6wIvl?lb=DutzQl8",
-    "posterUrl": null
-  },
-  {
-    "eventName": "RoboWars",
-    "organiser": "RoboISM",
-    "prizePool": "100k",
-    "unstopLink": "https://unstop.com/o/y4SRkIN?lb=DutzQl8",
-    "posterUrl": "https://res.cloudinary.com/deukzdr70/image/upload/v1728397468/robowars_htwg91.png"
   },
   {
     "eventName": "ProdBlitz 2.0",
