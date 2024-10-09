@@ -1,5 +1,6 @@
 package com.iitism.concetto_24.ui
 
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,12 +9,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.adapter.ImagePagerAdapter
 import com.iitism.concetto_24.databinding.FragmentHomeBinding
 import com.iitism.concetto_24.databinding.FragmentMainStageBinding
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+import kotlin.math.abs
 
 
 class MainStageFragment : Fragment() {
@@ -60,6 +64,16 @@ class MainStageFragment : Fragment() {
             "https://res.cloudinary.com/dimf24hn7/image/upload/v1727125581/With_Robowars__Tech-_talks__motivational_speeches__competitions__and_dance_night__day_2_of_Concetto__22_ended_on_a_high_note._Here_is_a_glimpse_of_the_happenings_around_the_campus._._.__concetto_shp304.jpg",
             "https://res.cloudinary.com/dimf24hn7/image/upload/v1727125582/A_short_glimpse_of_the_EDM_night_held_at_Amber_ground_which_marked_the_ending_of_Concetto_22_-_The_Annual_Techno_Management_Festival_of_IIT_ISM_Dhanbad._.__swattrexmusic___djmerlin_official___co_2_ztgndq.jpg"
         )
+
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(MarginPageTransformer((40 * Resources.getSystem().displayMetrics.density).toInt()))
+        compositePageTransformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = (0.80f + r * 0.20f)
+        }
+        binding.viewPager2022.setPageTransformer(compositePageTransformer)
+        binding.viewPager2023.setPageTransformer(compositePageTransformer)
+        binding.viewPager2024.setPageTransformer(compositePageTransformer)
 
         val viewPager2024 = view.findViewById<ViewPager2>(R.id.viewPager2024)
         val adapter2024 = ImagePagerAdapter(imageUrls2024, this)

@@ -12,25 +12,31 @@ import com.iitism.concetto_24.R
 class ImagePagerAdapter (
     private val imageUrls: List<String>,
     private val fragment: Fragment
-    ) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
+) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
 
-        class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val imageView: ImageView = itemView.findViewById(R.id.imageView)
-        }
+    // ViewHolder class to hold each page's view
+    class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageView: ImageView = itemView.findViewById(R.id.pageImage)
+    }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image_pager, parent, false)
-            return ImageViewHolder(view)
-        }
+    // Inflate the layout for each page (item_image_pager.xml)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image_pager, parent, false)
+        return ImageViewHolder(view)
+    }
 
-        override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-            val imageUrl = imageUrls[position]
-            Glide.with(fragment)
-                .load(imageUrl)
-                .into(holder.imageView)
-        }
+    // Bind the image to each ViewHolder
+    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+        val imageUrl = imageUrls[position]
 
-        override fun getItemCount(): Int {
-            return imageUrls.size
-        }
+        // Use Glide to load the image from the URL into the ImageView
+        Glide.with(fragment)
+            .load(imageUrl)
+            .into(holder.imageView)
+    }
+
+    // Return the number of items
+    override fun getItemCount(): Int {
+        return imageUrls.size
+    }
 }
