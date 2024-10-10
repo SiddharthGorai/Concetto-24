@@ -30,7 +30,7 @@ class GuestTalkFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentGuestTalkBinding.inflate(layoutInflater)
-        return binding!!.root
+        return binding.root
     }
 
 
