@@ -16,77 +16,54 @@ import com.bumptech.glide.request.RequestOptions
 import com.iitism.concetto_24.Data.CoreTeamDataModel
 import com.iitism.concetto_24.R
 
+class CoreTeamAdapter(private val dataList: List<CoreTeamDataModel>) :
+    RecyclerView.Adapter<CoreTeamAdapter.ViewHolder>() {
 
-class CoreTeamAdapter(private val dataList:List<CoreTeamDataModel>) :
-    RecyclerView.Adapter<CoreTeamAdapter.ViewHolder>(){
-
-    private lateinit var mListener: onItemClickListener
-
-    interface onItemClickListener{
-        fun onItemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(listener: onItemClickListener){
-        mListener = listener
-    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.coreteam_card_view,parent,false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.coreteam_card_view, parent, false)
         return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setIsRecyclable(false)
         val currentData = dataList[position]
-//        Log.i("data",currentData.toString())
-        if(currentData.image != null)
-        {
-//            Picasso.get().load(currentData.imageUri).into(holder.image_c)
 
+        if (!currentData.image.isNullOrEmpty()) {
             Glide.with(holder.itemView)
                 .load(currentData.image)
                 .apply(
                     RequestOptions()
-                        .placeholder(R.drawable.progress_animation)
+                        .placeholder(R.drawable.ic_person)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                 )
-                .centerCrop()
-                .into(holder.image_c)
+                .fitCenter()
+                .into(holder.profileImage)
+        } else {
+            holder.profileImage.setImageResource(R.drawable.ic_person)
         }
 
-        holder.name_c.text = currentData.name
+        holder.name.text = currentData.name
+        holder.team.text = currentData.team
+        holder.position.text = currentData.position
 
-        if(currentData?.team != null)
-            holder.team_c.text = currentData.team
-        else
-            holder.team_c.text = "Team"
-
-        if(currentData?.position != null)
-            holder.position_c.text = currentData.position
-        else
-            holder.position_c.text = "Postion"
-
-
-        if(currentData.linkedin_url != null)
-        {
-            Log.i("linkedInUrl",currentData.linkedin_url)
-            holder.linkedIn_c.setOnClickListener()
-            {
-                val url = currentData.linkedin_url
-                val i = Intent()
-                i.setPackage("com.android.chrome")
-                i.action = Intent.ACTION_VIEW
-                i.data = Uri.parse(url)
-                ContextCompat.startActivity(it.context, i, null)
+        holder.linkedInUrl.setOnClickListener {
+            val url = currentData.linkedIn_url
+            if (!url.isNullOrEmpty()) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                ContextCompat.startActivity(it.context, intent, null)
+            } else {
+                Log.d("LinkedIn URL", "URL is null or empty")
             }
         }
 
-        if(currentData.insta_url!= null && currentData.insta_url.isNotEmpty())
-        {
-            holder.insta_c.setOnClickListener()
-            {
-                val url = currentData.insta_url
+        holder.instagramUrl.setOnClickListener {
+            val url = currentData.instagram_url
+            if (!url.isNullOrEmpty()) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 ContextCompat.startActivity(it.context, intent, null)
+            } else {
+                Log.d("Instagram URL", "URL is null or empty")
             }
         }
     }
@@ -95,14 +72,12 @@ class CoreTeamAdapter(private val dataList:List<CoreTeamDataModel>) :
         return dataList.size
     }
 
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val image_c = view.findViewById<ImageView>(R.id.org_image_c)
-        val name_c = view.findViewById<TextView>(R.id.org_name_c)
-        val position_c = view.findViewById<TextView>(R.id.org_position_c)
-        val team_c = view.findViewById<TextView>(R.id.org_team_c)
-        val linkedIn_c = view.findViewById<ImageView>(R.id.org_linkedin_c)
-        val insta_c = view.findViewById<ImageView>(R.id.org_insta_c)
-
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val profileImage: ImageView = view.findViewById(R.id.profile_image)
+        val name: TextView = view.findViewById(R.id.tv_name)
+        val position: TextView = view.findViewById(R.id.tv_position)
+        val team: TextView = view.findViewById(R.id.tv_team)
+        val linkedInUrl: ImageView = view.findViewById(R.id.image_linkedIn)
+        val instagramUrl: ImageView = view.findViewById(R.id.image_instagram)
     }
 }

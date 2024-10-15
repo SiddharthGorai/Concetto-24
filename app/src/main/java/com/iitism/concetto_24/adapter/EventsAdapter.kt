@@ -1,6 +1,5 @@
 package com.iitism.concetto_24.adapter
 
-// EventAdapter.kt
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -12,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.models.EventsData
 
@@ -32,7 +32,7 @@ class EventAdapter(private val events: Array<EventsData>, private val context: C
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val event = events.get(position)
+        val event = events[position]
         holder.eventName.text = event.eventName
         holder.club.text = event.organiser
         holder.prizePool.text = "Prize Pool: ${event.prizePool}"
@@ -45,11 +45,12 @@ class EventAdapter(private val events: Array<EventsData>, private val context: C
         if (!event.posterUrl.isNullOrEmpty()) {
             Glide.with(context)
                 .load(event.posterUrl)
-                .placeholder(R.drawable.concetto) // Optional placeholder
-                .error(R.drawable.concetto) // Optional error image
+                .placeholder(R.drawable.concetto)
+                .error(R.drawable.concetto)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(holder.poster)
         } else {
-            holder.poster.setImageResource(R.drawable.concetto) // Set a default image or empty image
+            holder.poster.setImageResource(R.drawable.concetto)
         }
     }
 

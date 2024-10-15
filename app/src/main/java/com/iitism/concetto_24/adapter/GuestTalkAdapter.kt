@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iitism.concetto_24.Data.GuestTalkData
 import com.iitism.concetto_24.R
 
@@ -38,12 +39,13 @@ class GuestTalkAdapter(
         val viewMoreButton = holder.itemView.findViewById<Button>(R.id.btn_viewmore)
 
         // Load the image using Glide
-        Glide.with(holder.itemView.context).load(item.imageUrl)
+        Glide.with(holder.itemView.context).load(item.guestImage)
             .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(imageView)
 
         // Set the title
-        titleTextView.text = item.title
+        titleTextView.text = item.guestName
 
         // Set the click listener for the "View More" button
         viewMoreButton.setOnClickListener {
@@ -62,8 +64,8 @@ class GuestTalkAdapter(
         val closeButton = dialog.findViewById<Button>(R.id.btn_close)
 
         // Set title and description in the dialog
-        titleTextView.text = item.title
-        descriptionTextView.text = item.description
+        titleTextView.text = item.guestName
+        descriptionTextView.text = item.briefDescription
 
         // Set the close button's click listener
         closeButton.setOnClickListener {

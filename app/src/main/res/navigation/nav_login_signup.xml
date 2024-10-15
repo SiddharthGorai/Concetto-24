@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_login_signup"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/loginFragment">
 
@@ -32,11 +33,10 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment"/>
-        <!--            app:enterAnim="@anim/slide_in_right"-->
-        <!--            app:exitAnim="@anim/slide_out_left"-->
-        <!--            app:popEnterAnim="@anim/slide_in_left"-->
-        <!--            app:popExitAnim="@anim/slide_out_right"  />-->
+            app:destination="@id/registerFragment"
+            app:popUpTo="@id/nav_login_signup"
+            app:popUpToInclusive="true"/>
+
         <action
             android:id="@+id/action_loginFragment_to_otpFragment"
             app:destination="@id/otpFragment" />
@@ -48,11 +48,9 @@
         tools:layout="@layout/fragment_signup" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment"/>
-        <!--            app:enterAnim="@anim/slide_in_right"-->
-        <!--            app:exitAnim="@anim/slide_out_left"-->
-        <!--            app:popEnterAnim="@anim/slide_in_left"-->
-        <!--            app:popExitAnim="@anim/slide_out_right"  />-->
+            app:popUpTo="@id/nav_login_signup"
+            app:destination="@id/loginFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_registerFragment_to_otpFragment"
             app:destination="@id/otpFragment" />

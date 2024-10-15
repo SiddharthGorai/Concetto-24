@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Time Left"
-                android:textColor="@color/white" />
+                android:textColor="@color/primary" />
 
             <TextView
                 android:id="@+id/finished_id"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Finished"
-                android:textColor="@color/white"
+                android:textColor="@color/primary"
                 android:visibility="gone" />
 
 
@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="00"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
 
                     <TextView
@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:text="Days"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="00"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
 
                     <TextView
@@ -127,7 +127,7 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Hours"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -148,7 +148,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="00"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
 
                     <TextView
@@ -158,7 +158,7 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Minutes"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -179,7 +179,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="00"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
 
                     <TextView
@@ -190,7 +190,7 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:text="Seconds"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -269,7 +269,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="10dp"
-                        android:text="Competions" />
+                        android:text="Competitions" />
                 </LinearLayout>
 
                 <LinearLayout

@@ -47,15 +47,16 @@ class SignupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initializeDialog()
         binding.tvLogin.setOnClickListener {
-            val navOptions = NavOptions.Builder()
-                .setPopUpTo(R.id.onboardingFragment, false)
-                .build()
-
-            findNavController().navigate(
-                R.id.action_registerFragment_to_loginFragment,
-                null,
-                navOptions
-            )
+//            val navOptions = NavOptions.Builder()
+//                .setPopUpTo(R.id.onboardingFragment, false)
+//                .build()
+//
+//            findNavController().navigate(
+//                R.id.action_registerFragment_to_loginFragment,
+//                null,
+//                navOptions
+//            )
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
         binding.btnSignUp.setOnClickListener {

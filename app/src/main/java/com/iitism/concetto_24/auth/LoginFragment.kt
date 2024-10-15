@@ -50,6 +50,7 @@ class LoginFragment : Fragment() {
         initializeDialog()
         binding.registerTextView.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+
         }
 
         binding.btnLogin.setOnClickListener {

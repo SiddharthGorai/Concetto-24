@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iitism.concetto_24.R
 
 class GalleryAdapter(private val imageUrls: List<String>) : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
@@ -25,6 +26,7 @@ class GalleryAdapter(private val imageUrls: List<String>) : RecyclerView.Adapter
             .load(imageUrl)
             .placeholder(R.drawable.concetto) // Optional placeholder
             .error(R.drawable.concetto) // Optional error image
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(holder.imageView)
     }
 
