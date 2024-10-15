@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iitism.concetto_24.R
 import com.iitism.concetto_24.models.EventsData
 
@@ -46,6 +47,7 @@ class EventAdapter(private val events: Array<EventsData>, private val context: C
                 .load(event.posterUrl)
                 .placeholder(R.drawable.concetto)
                 .error(R.drawable.concetto)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(holder.poster)
         } else {
             holder.poster.setImageResource(R.drawable.concetto)

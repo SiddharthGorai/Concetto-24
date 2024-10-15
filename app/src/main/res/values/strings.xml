@@ -19,5 +19,11 @@ Anubhav Dubey is the co-founder of Chai Sutta Bar, a popular Indian tea chain kn
         with many aspiring professionals, as he highlights resilience in overcoming challenges. Through workshops and seminars,
         Vijender encourages individuals to take charge of their lives and prioritize personal growth.</string>
 
+    <string-array name="date">
+        <item>18 Oct</item>
+        <item>19 Oct</item>
+        <item>20 Oct</item>
+    </string-array>
+
 
 </resources>
