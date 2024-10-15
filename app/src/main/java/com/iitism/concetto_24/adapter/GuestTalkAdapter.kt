@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iitism.concetto_24.Data.GuestTalkData
 import com.iitism.concetto_24.R
 
@@ -40,6 +41,7 @@ class GuestTalkAdapter(
         // Load the image using Glide
         Glide.with(holder.itemView.context).load(item.guestImage)
             .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(imageView)
 
         // Set the title

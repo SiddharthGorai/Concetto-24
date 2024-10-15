@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iitism.concetto_24.R
 
 class ImagePagerAdapter (
@@ -32,6 +33,7 @@ class ImagePagerAdapter (
         // Use Glide to load the image from the URL into the ImageView
         Glide.with(fragment)
             .load(imageUrl)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(holder.imageView)
     }
 

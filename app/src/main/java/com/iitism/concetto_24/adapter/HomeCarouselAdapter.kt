@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iitism.concetto_24.R
 
 class HomeCarouselAdapter(private val dataList: Array<String>): RecyclerView.Adapter<HomeCarouselAdapter.HomeCarouselViewHolder>() {
@@ -25,6 +26,7 @@ class HomeCarouselAdapter(private val dataList: Array<String>): RecyclerView.Ada
         Glide.with(holder.itemView.context)
             .load(dataList[position])
             .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(imageView)
     }
 }
