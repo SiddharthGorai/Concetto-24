@@ -1,10 +1,12 @@
 package com.iitism.concetto_24.ui
 
 import android.app.Dialog
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -69,70 +71,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        binding.appBar.btnLogOut.setOnClickListener {
-//            val logOutDialog = layoutInflater.inflate(R.layout.layout_custom_material_dialog, null)
-//            val logOutDialogBuilder =
-//                MaterialAlertDialogBuilder(this, R.style.CustomAlertDialog)
-//                    .setView(logOutDialog)
-//                    .show()
-//
-//            logOutDialogBuilder.findViewById<TextView>(R.id.customDialogTitle)?.text = "Srijan '24"
-//            logOutDialogBuilder.findViewById<TextView>(R.id.subTitle)?.visibility = View.VISIBLE
-//            logOutDialogBuilder.findViewById<TextView>(R.id.subTitle)?.text =
-//                "Do you want to Log Out?"
-//            val positiveButton =
-//                logOutDialogBuilder.findViewById<Button>(R.id.customDialogPositiveBtn)
-//            positiveButton?.apply {
-//                text = "Yes" // Set the button text if needed
-//                setOnClickListener {
-//                    preferences.edit().clear().apply()
-//                    binding.appBar.btnLogOut.visibility = View.GONE
-//                    binding.appBar.btnProfilehome.visibility = View.VISIBLE
-//
-//                    logOutDialogBuilder.dismiss()
-//                    Toast.makeText(
-//                        this@MainActivity,
-//                        "Logged out successfully ",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//            val neutralButton =
-//                logOutDialogBuilder.findViewById<Button>(R.id.customDialogNeutralBtn)
-//            neutralButton?.apply {
-//                text = "No" // Set the button text if needed
-//                setOnClickListener {
-//                    logOutDialogBuilder.dismiss()
-//                }
-//            }
-//
-//
-//        }
 
         dialog.show()
 
-//        val preferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         val isISMite = preferences.getString("isISMite", "") ?: ""
 
 
 
         dismissDialogAfterDelay()
-//        FirebaseMessaging.getInstance().subscribeToTopic(topic).addOnCompleteListener {
-//            if (it.isSuccessful) {
-//                Log.d("SUBSCRIBE", "subscribed")
-//            } else {
-//                Log.d("SUBSCRIBE", "subscription failed")
-//            }
-//            dialog.dismiss()
-//        }.addOnFailureListener {
-//            dialog.dismiss()
-//        }
-
-//        val fcmToken = getFCMTokenFromSharedPreferences()
-//        if(fcmToken.isEmpty()) {
-//            dialog.show()
-//            obtainAndSendFCMTokenToApi()
-//        }
 
         navController = findNavController(R.id.nav_host_fragment_content_main)
 
@@ -269,7 +215,20 @@ class MainActivity : AppCompatActivity() {
             dialog.dismiss()
         }, 2000)
     }
-
+    private fun openPlayStoreForRating() {
+        val appPackageName = packageName
+        try {
+            val uri = "market://details?id=$appPackageName"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            val uri = "https://play.google.com/store/apps/details?id=$appPackageName"
+             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+    }
     private fun initializeDialog() {
         dialog = Dialog(this)
         dialog.setContentView(R.layout.progress_bar)
