@@ -50,8 +50,8 @@ class ScheduleViewModel(private val context : Context) : ViewModel() {
     }
 
     fun filterDataByDate(selectedDate: String) {
-        var filteredList =Schedule.filter {
-            if(it.eventTime.length >=2) it.eventTime.substring(0,6) == selectedDate
+        var filteredList = Schedule.filter {
+            if(it.eventTime.length >=2) it.eventTime.substring(0,8) == selectedDate
             else false
         }
         Log.i("data1",_ScheduleList.size.toString())
