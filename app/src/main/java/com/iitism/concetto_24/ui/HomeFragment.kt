@@ -92,6 +92,7 @@ class HomeFragment : Fragment() {
         }
 
         val images = arrayOf(
+            "https://res.cloudinary.com/dc3prss4c/image/upload/v1729000509/ubg727ooxhcayxdkhnsp.png",
            "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973132/IMG-20240910-WA0054_p41az0.jpg",
             "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973132/IMG-20240910-WA0053_bijxkg.jpg",
             "https://res.cloudinary.com/dnywj3xrl/image/upload/v1725973121/IMG-20240910-WA0055_ue4b8r.jpg",

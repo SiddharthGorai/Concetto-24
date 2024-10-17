@@ -1,5 +1,26 @@
 [
   {
+    "eventName": "RoboWars",
+    "organiser": "RoboISM",
+    "prizePool": "100k",
+    "unstopLink": "https://unstop.com/o/y4SRkIN?lb=DutzQl8",
+    "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001159/2_otqltj.png"
+  },
+  {
+    "eventName": "M.A.R.G.(Manual Armed Rover Game)",
+    "organiser": "RoboISM",
+    "prizePool": "30k",
+    "unstopLink": "https://unstop.com/o/cKBdrPH?lb=DutzQl8",
+    "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001154/24_md2oyv.png"
+  },
+  {
+    "eventName": "Chakravyu: Maze Solver",
+    "organiser": "RoboISM",
+    "prizePool": "20k",
+    "unstopLink": "https://unstop.com/o/ED6wIvl?lb=DutzQl8",
+    "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001155/25_acrewl.png"
+  },
+  {
     "eventName": "AscensionArcade",
     "organiser": "Data and Programing Club",
     "prizePool": "22k",
@@ -17,7 +38,7 @@
     "eventName": "CODERapido",
     "organiser": "Data and Programing Club",
     "prizePool": "20k",
-    "unstopLink": "https://unstop.com/p/coderapido-concetto24-indian-institute-of-technology-indian-school-of-mines-1173076" ,
+    "unstopLink": "https://unstop.com/p/coderapido-concetto24-indian-institute-of-technology-indian-school-of-mines-1173076",
     "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001169/21_v9bssa.png"
   },
   {
@@ -98,27 +119,6 @@
     "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001209/23_lj7ygq.png"
   },
   {
-    "eventName": "M.A.R.G.(Manual Armed Rover Game)",
-    "organiser": "RoboISM",
-    "prizePool": "30k",
-    "unstopLink": "https://unstop.com/o/cKBdrPH?lb=DutzQl8",
-    "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001154/24_md2oyv.png"
-  },
-  {
-    "eventName": "Chakravyu: Maze Solver",
-    "organiser": "RoboISM",
-    "prizePool": "20k",
-    "unstopLink": "https://unstop.com/o/ED6wIvl?lb=DutzQl8",
-    "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001155/25_acrewl.png"
-  },
-  {
-    "eventName": "RoboWars",
-    "organiser": "RoboISM",
-    "prizePool": "100k",
-    "unstopLink": "https://unstop.com/o/y4SRkIN?lb=DutzQl8",
-    "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001159/2_otqltj.png"
-  },
-  {
     "eventName": "ProdBLitz 2.0",
     "organiser": "Product Management Club",
     "prizePool": "30k",
@@ -146,4 +146,4 @@
     "unstopLink": "https://unstop.com/o/xEjrXPf?lb=3vO60AT",
     "posterUrl": "https://res.cloudinary.com/dnywj3xrl/image/upload/v1729001168/18_xg39en.png"
   }
-  ]
+]

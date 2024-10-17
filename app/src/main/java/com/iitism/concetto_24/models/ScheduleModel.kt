@@ -1,9 +1,11 @@
 package com.iitism.concetto_24.models
 
+
 data class ScheduleModel(
-    var eventTime:String,
     var eventName: String,
+    var eventDate: String,
+    var eventTime: String,
     var eventVenue : String,
-    val eventDescription : String,
-    val eventPosterUrl : String
+    var eventDescription: String,
+    var eventPosterUrl: String
 )
