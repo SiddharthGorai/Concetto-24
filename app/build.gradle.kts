@@ -13,8 +13,8 @@ android {
         applicationId = "com.iitism.concetto_24"
         minSdk = 30
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.3"
+        versionCode = 6
+        versionName = "1.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -68,15 +68,18 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
-    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation(libs.androidx.security.crypto)
+
+    // play store warning
+    implementation(libs.soloader)
 
 
-    implementation ("com.cloudinary:cloudinary-android:2.5.0")
+    implementation (libs.cloudinary.android)
 
 // Download + Preprocess:
-    implementation ("com.cloudinary:cloudinary-android-download:2.5.0")
-    implementation ("com.cloudinary:cloudinary-android-preprocess:2.5.0")
-    implementation ("com.tbuonomo:dotsindicator:4.3")
+    implementation (libs.cloudinary.android.download)
+    implementation (libs.cloudinary.android.preprocess)
+    implementation (libs.dotsindicator)
 
 
     //Announcements and Notifications
